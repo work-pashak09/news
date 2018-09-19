@@ -13,7 +13,6 @@ class MassDelete extends  \Neklo\News\Controller\Adminhtml\MassectionAction\Abst
         Action\Context $context,
         \Neklo\News\Model\ResourceNews\News\CollectionFactory $collectionFactory
     ) {
-        exit("45234234234");
         parent::__construct($context);
         $this->collectionFactory = $collectionFactory;
     }

@@ -2,7 +2,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="news_list_data_source" xsi:type="string">Neklo\News\Model\ResourceNews\News\Grid\Collection</item>
+                <item name="article_list_data_source" xsi:type="string">Neklo\News\Model\ResourceNews\News\Grid\Collection</item>
                 <item name="categories_list_data_source" xsi:type="string">Neklo\News\Model\ResourceNews\Categories\Grid\Collection</item>
             </argument>
         </arguments>

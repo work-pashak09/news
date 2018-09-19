@@ -4,13 +4,12 @@
     <argument name="data" xsi:type="array">
 
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">form_edit_news.employee_form_data_source</item>
-            <item name="deps" xsi:type="string">form_edit_news.employee_form_data_source</item>
+            <item name="provider" xsi:type="string">form_edit_article.employee_form_data_source</item>
+            <item name="deps" xsi:type="string">form_edit_article.employee_form_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Employee Information</item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
-            <item name="namespace" xsi:type="string">form_edit_news</item>
+            <item name="namespace" xsi:type="string">form_edit_article</item>
         </item>
 
         <item name="template" xsi:type="string">templates/form/collapsible</item>
@@ -29,7 +28,7 @@
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="article/save"/>
+                    <item name="submit_url" xsi:type="url" path="news/article/save"/>
                 </item>
             </argument>
         </argument>
@@ -76,7 +75,6 @@
                 <item name="visible" xsi:type="boolean">true</item>
                 <item name="dataType" xsi:type="string">text</item>
                 <item name="formElement" xsi:type="string">select</item>
-                <!--<item name="elementTmpl" xsi:type="string">Neklo_Security/form/element/select-text</item>-->
             </item>
         </argument>
     </field>

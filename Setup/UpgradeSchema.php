@@ -14,8 +14,11 @@ class UpgradeSchema implements UpgradeSchemaInterface
         $setup->startSetup();
         $connection = $setup->getConnection();
 
-        if ($context->getVersion() && version_compare($context->getVersion(), '1.1.5') < 0) {
-
+        if ($context->getVersion() && version_compare(
+            $context->getVersion(),
+            '1.1.5'
+        )
+            < 0) {
             $table = $connection
                 ->newTable($setup->getTable('cms_categories_news'))
                 ->addColumn(
@@ -23,17 +26,15 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
                     null,
                     ['identity' => true, 'nullable' => false, 'primary' => true]
-
                 )->addColumn(
                     'categoria',
                     \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                     255,
                     ['nullable' => false]
                 );
-              $connection->createTable($table);
+            $connection->createTable($table);
 
-
-               $connection->addColumn(
+            $connection->addColumn(
                 $setup->getTable('cms_news'),
                 'url_key',
                 [
@@ -44,7 +45,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment' => 'Address field'
                 ]
             );
-             $connection->addColumn(
+            $connection->addColumn(
                 $setup->getTable('cms_news'),
                 'categories_id',
                 [
@@ -69,7 +70,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 ]
             );
         }
-
         $setup->endSetup();
     }
 }

@@ -12,16 +12,18 @@ use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
 use Neklo\News\Model\ResourceNews\Categories as SnippetResource;
 
-class Categories  extends AbstractModel implements IdentityInterface
+class Categories extends AbstractModel implements IdentityInterface
 {
     const CACHE_TAG = 'snippet_data';
+
     /**
      * @return void
      */
-    protected function _construct()
+    public function _construct()
     {
         $this->_init(SnippetResource::class);
     }
+
     /**
      * Return unique ID(s) for each object in system
      *
@@ -34,13 +36,11 @@ class Categories  extends AbstractModel implements IdentityInterface
 
     public function getOne($id)
     {
-      return $this->load($id, 'id')->getData();
+        return $this->load($id, 'id')->getData();
     }
 
-    public function GetDataCatNews(){
-       return $this->getCollection()->getData();
+    public function GetDataCatNews()
+    {
+        return $this->getCollection()->getData();
     }
-
-
-
 }

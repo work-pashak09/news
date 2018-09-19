@@ -29,19 +29,15 @@ abstract class AbstractBaseMassection extends \Magento\Ui\Component\MassAction
         foreach ($this->getChildComponents() as $item) {
             switch ($item->getName()) {
                 case 'delete':
-                    {
-                        if ($isAut) {
-                            $config['actions'][] = $item->getConfiguration();
-                        }
-                        break;
+                    if ($isAut) {
+                        $config['actions'][] = $item->getConfiguration();
                     }
+                    break;
                 case 'run':
-                    {
-                        if ($isAut) {
-                            $config['actions'][] = $item->getConfiguration();
-                        }
-                        break;
+                    if ($isAut) {
+                        $config['actions'][] = $item->getConfiguration();
                     }
+                    break;
             }
         }
         if ($config !== $original) {

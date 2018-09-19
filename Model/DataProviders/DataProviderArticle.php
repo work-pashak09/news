@@ -1,4 +1,5 @@
 <?php
+
 namespace Neklo\News\Model\DataProviders;
 
 use \Neklo\News\Model\ResourceNews\News\CollectionFactory;

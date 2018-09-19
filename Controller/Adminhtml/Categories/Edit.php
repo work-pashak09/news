@@ -5,14 +5,12 @@ namespace Neklo\News\Controller\Adminhtml\Categories;
 
 use Magento\Framework\Registry;
 
-class Edit extends  \Magento\Backend\App\Action
+class Edit extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Neklo_News::article';
-    protected $resultPageFactory = false;
-
+    private $resultPageFactory = false;
     private $registry;
     private $model;
-
 
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -30,13 +28,14 @@ class Edit extends  \Magento\Backend\App\Action
     {
 
         $param = $this->getRequest()->getParam('id');
-
-
-        if($param && is_numeric($param) && $this->model->getOne($param)) {
+        if ($param && is_numeric($param) && $this->model->getOne($param)) {
             $resultPage = $this->resultPageFactory->create();
             $resultPage->getConfig()->getTitle()->prepend((__('Edit Categories')));
-        }
-        else {
+            $this->registry->register(
+                'id',
+                $param
+            );
+        } else {
             $resultPage = $this->resultPageFactory->create();
         }
         return $resultPage;

@@ -12,7 +12,6 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
 
     const PRIFIX_URL = 'url/url_filds/pref_url';
 
-
     public function getIsEnabled()
     {
         return $this->scopeConfig->isSetFlag(
@@ -20,6 +19,7 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
     }
+
     public function getPrifixUrl()
     {
         return $this->scopeConfig->getValue(
@@ -28,16 +28,19 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
         );
     }
 
-    public function getNameTable(){
+    public function getNameTable()
+    {
         return $this->scopeConfig->getValue(
             self::NAME_TABLE,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
     }
-    public function getUrlNews(){
+
+    public function getUrlNews()
+    {
         return $this->scopeConfig->getValue(
             self::BASE_URL,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
     }
- }
+}

@@ -114,6 +114,7 @@
         <column name="categoria">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
                     <item name="resizeEnabled" xsi:type="boolean">true</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="label" xsi:type="string" translate="true">categoria</item>

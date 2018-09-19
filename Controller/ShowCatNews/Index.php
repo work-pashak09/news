@@ -8,9 +8,8 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-    protected $_resultPageFactory;
+    private $resultPageFactory;
     private $model;
-    private $helper;
     private $registry;
 
     public function __construct(
@@ -18,9 +17,8 @@ class Index extends \Magento\Framework\App\Action\Action
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Framework\Registry $registry,
         \Neklo\News\Model\CategoriesFactory $model
-    )
-    {
-        $this->_resultPageFactory = $resultPageFactory;
+    ) {
+        $this->resultPageFactory = $resultPageFactory;
         $this->registry = $registry;
         $this->model = $model;
         parent::__construct($context);
@@ -28,7 +26,6 @@ class Index extends \Magento\Framework\App\Action\Action
 
     public function execute()
     {
-
         $cat = $this->model->create()->load(
             $this->_request->getParam('cat_id')
         );
@@ -37,13 +34,12 @@ class Index extends \Magento\Framework\App\Action\Action
             return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('news');
         }
         $this->registry->register('current_news_category', $cat);
-        $resultPage = $this->_resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         return $resultPage;
-
-
     }
 
-    public function getPartUrl(){
+    public function getPartUrl()
+    {
         return $this->registry->registry('partUrl');
     }
 }

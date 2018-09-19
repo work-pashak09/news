@@ -13,7 +13,7 @@ class ActionCategories extends Column
     /**
      * @var UrlInterface
      */
-    protected $urlBuilder;
+    private $urlBuilder;
 
     /**
      * @param ContextInterface $context

@@ -6,27 +6,25 @@ use Magento\Framework\App\Action\Context;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-    protected $_resultPageFactory;
-    protected $helper;
+    private $resultPageFactory;
+    private $helper;
 
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Neklo\News\Helper\Config $helper
-    )
-    {
+    ) {
         $this->helper = $helper;
-        $this->_resultPageFactory = $resultPageFactory;
+        $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
     }
 
     public function execute()
     {
-        if($this->helper->getIsEnabled()) {
-            $resultPage = $this->_resultPageFactory->create();
+        if ($this->helper->getIsEnabled()) {
+            $resultPage = $this->resultPageFactory->create();
             return $resultPage;
-        }
-        else {
+        } else {
             return $this->_redirect('/*/*/');
         }
     }

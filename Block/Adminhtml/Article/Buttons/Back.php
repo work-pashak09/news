@@ -10,7 +10,7 @@ namespace Neklo\News\Block\Adminhtml\Article\Buttons;
 
 use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBaseButton;
 
-class Back  extends AbstractBaseButton
+class Back extends AbstractBaseButton
 {
 
     public function getButtonData()
@@ -22,5 +22,4 @@ class Back  extends AbstractBaseButton
                 'class' => 'back'
             ];
     }
-
 }

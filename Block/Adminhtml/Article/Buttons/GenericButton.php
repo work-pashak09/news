@@ -1,10 +1,6 @@
 <?php
 namespace Neklo\News\Block\Adminhtml\Article\Buttons;
 
-
-/**
- * Class GenericButton
- */
 class GenericButton
 {
     /**
@@ -12,14 +8,14 @@ class GenericButton
      *
      * @var \Magento\Framework\UrlInterface
      */
-    protected $urlBuilder;
+    private $urlBuilder;
 
     /**
      * Registry
      *
      * @var \Magento\Framework\Registry
      */
-    protected $registry;
+    private $registry;
 
     /**
      * Constructor
@@ -50,5 +46,10 @@ class GenericButton
     public function getUrl($route = '', $params = [])
     {
         return $this->urlBuilder->getUrl($route, $params);
+    }
+
+    public function getRegistry()
+    {
+        return $this->registry;
     }
 }

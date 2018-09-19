@@ -1,7 +1,6 @@
 <?php
 namespace Neklo\News\Model\DataProviders;
 
-//use \Neklo\News\Model\ResourceNews\News\CollectionFactory;
 use Neklo\News\Model\ResourceNews\Categories\CollectionFactory;
 
 class DataProviderCategoriesArt extends \Magento\Ui\DataProvider\AbstractDataProvider

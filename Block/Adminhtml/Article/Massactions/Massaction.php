@@ -1,9 +1,6 @@
 <?php
 
-
 namespace Neklo\News\Block\Adminhtml\Article\Massactions;
-
-
 
 use Neklo\News\Block\Adminhtml\AbstractElements\Massactions\AbstractBaseMassection;
 

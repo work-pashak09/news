@@ -3,7 +3,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="form_edit_news"/>
+            <uiComponent name="form_edit_article"/>
         </referenceContainer>
     </body>
 </page>

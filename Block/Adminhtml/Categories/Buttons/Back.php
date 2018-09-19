@@ -10,14 +10,10 @@ namespace Neklo\News\Block\Adminhtml\Categories\Buttons;
 
 use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBaseButton;
 
-class Back  extends AbstractBaseButton
+class Back extends AbstractBaseButton
 {
-
-
-
     public function getButtonData()
     {
-
         return [
             'label' => __('Back'),
             'url' => $this->getUrl('news/categories'),

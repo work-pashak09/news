@@ -5,6 +5,7 @@ namespace Neklo\News\Model;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
 use Neklo\News\Model\ResourceNews\News as SnippetResource;
+
 /**
  * Class Snippet
  * @package Snippet\Table\Model
@@ -15,7 +16,7 @@ class News extends AbstractModel implements IdentityInterface
     /**
      * @return void
      */
-    protected function _construct()
+    public function _construct()
     {
         $this->_init(SnippetResource::class);
     }

@@ -5,7 +5,6 @@ namespace Neklo\News\Controller;
 
 class Router implements \Magento\Framework\App\RouterInterface
 {
-
     protected $actionFactory;
     protected $config;
     protected $_response;

@@ -13,18 +13,6 @@ use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBaseButton;
 class DeleteButton extends AbstractBaseButton
 {
     const ADMIN_RESOURCE = 'Neklo_News::delete';
-
-    private $Request;
-
-    public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\AuthorizationInterface $authorization,
-        \Magento\Framework\App\Request\Http $Request)
-    {
-        parent::__construct($context, $registry, $authorization);
-        $this->Request = $Request;
-    }
     /**
      * Retrieve button-specified settings
      *
@@ -32,20 +20,18 @@ class DeleteButton extends AbstractBaseButton
      */
     public function getButtonData()
     {
-
-        $id = $this->Request->getParam('id');
+        $id = $this->getRegistry()->registry('id');
         $data  =[];
         if ($id && $this->isAllowed()) {
             $data = [
                 'label' => __('Delete News'),
                 'class' => 'del',
                 'on_click' => 'deleteConfirm(\'' . __(
-                        'Are you sure you want to do this?'
-                    ) . '\', \'' . $this->getUrl('*/*/del', ['id' => $id]) . '\')',
+                    'Are you sure you want to do this?'
+                ) . '\', \'' . $this->getUrl('*/*/del', ['id' => $id]) . '\')',
                 'sort_order' => 20,
             ];
         }
         return $data;
     }
-
 }

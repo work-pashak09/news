@@ -2,12 +2,10 @@
 
 namespace Neklo\News\Controller\Adminhtml\Categories;
 
-
-class NewAction extends  \Magento\Backend\App\Action
+class NewAction extends \Magento\Backend\App\Action
 {
-
     public function execute()
     {
-    return  $this->_forward('edit');
+        return $this->_forward('edit');
     }
 }
