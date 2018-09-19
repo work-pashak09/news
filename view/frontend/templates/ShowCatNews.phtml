@@ -1,0 +1,20 @@
+<?php /** @var \Neklo\News\Block\ShowCatNews $block */ ?>
+<?php if ($block->canShow()): ?>
+    <h1 style="text-align: center"><?=$block->getCategory()->getData('categoria'); ?></h1>
+<br/>
+<a href="/<?=$block->getPartUrlNews()?>/categories/">Назад</a>
+<?php $prefix = $block->getPrefix()?>
+<?php foreach ($block->getNewsCat() as $article):
+
+       // var_dump($article['url_key']);
+      //  exit;
+
+        ?>
+
+        <div style="background-color: #dcdbdb; margin: 10px;text-align: center">
+            <p>Заголовок <p><?=$article['title']?></p></p>
+            <p>Контент <p><?=$article['content']?></p></p>
+            <p><a href="/<?="{$block->getPartUrlNews()}/{$block->getCategory()->getData('categoria')}/{$article['url_key']}$prefix"?>">Смотреть</a></p>
+        </div>
+<?php endforeach; ?>
+<?php endif; ?>
