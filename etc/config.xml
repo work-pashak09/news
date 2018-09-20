@@ -5,28 +5,24 @@
         <news>
             <news>
                 <is_enabled>1</is_enabled>
-            </news>
-        </news>
-    </default>
-    <default>
-        <news>
-            <news>
                 <name_table>List block news</name_table>
             </news>
         </news>
-    </default>
-    <default>
         <url>
             <url_filds>
                 <def_url>news</def_url>
-            </url_filds>
-        </url>
-    </default>
-    <default>
-        <url>
-            <url_filds>
                 <pref_url>.html</pref_url>
             </url_filds>
         </url>
+        <links>
+            <links_control_header_link>
+                <is_activ>1</is_activ>
+                <title_url>Main</title_url>
+            </links_control_header_link>
+            <links_control_footer_link>
+                <is_activ>1</is_activ>
+                <title_url>Go to news</title_url>
+            </links_control_footer_link>
+        </links>
     </default>
 </config>

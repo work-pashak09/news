@@ -17,8 +17,7 @@ class ShowCatNews extends \Magento\Framework\View\Element\Template
         \Neklo\News\Helper\Config $config,
         \Magento\Framework\Registry $registry,
         array $data = []
-    )
-    {
+    ) {
         $this->registry = $registry;
         parent::__construct($context, $data);
         $this->collectionFactory = $collectionFactory;

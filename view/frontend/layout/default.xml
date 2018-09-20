@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Neklo\News\Block\Links\BaseLink" name="Home" before='wish-list-link'>
+                <arguments>
+                    <argument name="path" xsi:type="string">/</argument>
+                    <argument name="config_path" xsi:type="string">links/links_control_header_link</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="footer_links">
+            <block class="Neklo\News\Block\Links\BaseLink" name="privacy-policy-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">/</argument>
+                    <argument name="config_path" xsi:type="string">links/links_control_footer_link</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

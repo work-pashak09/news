@@ -5,12 +5,11 @@ namespace Neklo\News\Helper;
 class Config extends \Magento\Framework\App\Helper\AbstractHelper
 {
     const IS_ENABLED = 'news/news/is_enabled';
-
     const NAME_TABLE = 'news/news/name_table';
-
     const BASE_URL = 'url/url_filds/def_url';
-
     const PRIFIX_URL = 'url/url_filds/pref_url';
+    const IS_SHOW_HEADER_LINKS = 'links/linksShow/header';
+    const IS_SHOW_FOOTER_LINKS = 'links/linksShow/footer';
 
     public function getIsEnabled()
     {

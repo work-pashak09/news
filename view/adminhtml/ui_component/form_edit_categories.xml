@@ -4,8 +4,8 @@
     <argument name="data" xsi:type="array">
 
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">form_edit_categories.employee_form_data_source</item>
-            <item name="deps" xsi:type="string">form_edit_categories.employee_form_data_source</item>
+            <item name="provider" xsi:type="string">form_edit_categories.categories_form_data_source</item>
+            <item name="deps" xsi:type="string">form_edit_categories.categories_form_data_source</item>
         </item>
 
         <item name="config" xsi:type="array">
@@ -20,10 +20,10 @@
             <item name="back" xsi:type="string">Neklo\News\Block\Adminhtml\Categories\Buttons\Back</item>
         </item>
     </argument>
-    <dataSource name="employee_form_data_source">
+    <dataSource name="categories_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Neklo\News\Model\DataProviders\DataProviderCategoriesArt</argument>
-            <argument name="name" xsi:type="string">employee_form_data_source</argument>
+            <argument name="name" xsi:type="string">categories_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">main_table.id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
