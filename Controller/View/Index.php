@@ -6,7 +6,7 @@ use Magento\Framework\App\Action\Context;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-    protected $_resultPageFactory;
+    private $resultPageFactory;
     private $modelFactory;
     private $registry;
     private $config;
@@ -17,9 +17,8 @@ class Index extends \Magento\Framework\App\Action\Action
         \Neklo\News\Model\NewsFactory $modelFactory,
         \Magento\Framework\Registry $registry,
         \Neklo\News\Helper\Config $config
-    )
-    {
-        $this->_resultPageFactory = $resultPageFactory;
+    ) {
+        $this->resultPageFactory = $resultPageFactory;
         $this->modelFactory = $modelFactory;
         $this->registry = $registry;
         $this->config = $config;
@@ -38,17 +37,20 @@ class Index extends \Magento\Framework\App\Action\Action
                 $model = $this->modelFactory->create()
                     ->getCollection();
                 $model->getSelect()
-                    ->joinLeft(['second' => 'cms_categories_news'],
-                        'main_table.categories_id = second.id');
+                    ->joinLeft([
+                        'second' => 'cms_categories_news'
+                        ],
+                        'main_table.categories_id = second.id'
+                    );
                 $news = $model->addFieldToFilter('main_table.id', $idPost)->getData();
                 if (!$news) {
                     return $this->_redirect('*/index');
                 }
-                 $this->registry->register('partUrl',$this->config->getUrlNews());
+                $this->registry->register('partUrl', $this->config->getUrlNews());
                 $this->registry->register('article', $news[0]);
             }
         }
-        $resultPage = $this->_resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         return $resultPage;
     }
 }

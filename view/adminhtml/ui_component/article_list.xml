@@ -48,7 +48,6 @@
         <filters name="listing_filters"/>
         <paging name="listing_paging"/>
         <exportButton name="export_button"/>
-
         <massaction name="listing_massaction" class="Neklo\News\Block\Adminhtml\Article\Massactions\Massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -71,7 +70,6 @@
                 </argument>
             </action>
         </massaction>
-
     </listingToolbar>
     <columns name="neklo_multilevelcoupon_coupon_columns">
         <argument name="data" xsi:type="array">
@@ -108,7 +106,6 @@
                     <item name="label" xsi:type="string" translate="true">title</item>
                 </item>
             </argument>
-
         </column>
         <column name="content">
             <argument name="data" xsi:type="array">
@@ -116,7 +113,6 @@
                     <item name="resizeEnabled" xsi:type="boolean">true</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                     <item name="label" xsi:type="string" translate="true">content</item>
-
                 </item>
             </argument>
         </column>

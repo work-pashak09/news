@@ -28,6 +28,7 @@
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="validate_url" xsi:type="url" path="news/article/validate"/>
                     <item name="submit_url" xsi:type="url" path="news/article/save"/>
                 </item>
             </argument>
@@ -38,18 +39,53 @@
             </item>
         </argument>
     </dataSource>
-        <field name="title">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">title</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">article</item>
-                    <item name="dataScope" xsi:type="string">title</item>
+    <field name="title">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="label" xsi:type="string" translate="true">title</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="source" xsi:type="string">article</item>
+                <item name="dataScope" xsi:type="string">title</item>
+                <item name="validation" xsi:type="array">
+                    <item name="required-entry" xsi:type="boolean">true</item>
+                    <item name="stripped-min-length" xsi:type="string">4</item>
                 </item>
-            </argument>
-        </field>
-        <field name="content">
+            </item>
+        </argument>
+    </field>
+    <field name="url_key">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="label" xsi:type="string" translate="true">name link title</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="source" xsi:type="string">article</item>
+                <item name="dataScope" xsi:type="string">url_key</item>
+                <item name="validation" xsi:type="array">
+                    <item name="required-entry" xsi:type="boolean">true</item>
+                    <item name="no-whitespace" xsi:type="boolean">true</item>
+                    <item name="stripped-min-length" xsi:type="string">4</item>
+                </item>
+            </item>
+        </argument>
+    </field>
+    <field name="rewrite_url">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="label" xsi:type="string" translate="true">rewrite url</item>
+                <item name="formElement" xsi:type="string">checkbox</item>
+                <item name="source" xsi:type="string">rewrite_url</item>
+                <item name="dataScope" xsi:type="string">rewrite_url</item>
+                <item name="valueMap" xsi:type="array">
+                    <item name="true" xsi:type="string">1</item>
+                    <item name="false" xsi:type="string">0</item>
+                </item>
+            </item>
+        </argument>
+    </field>
+    <field name="content">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="dataType" xsi:type="string">text</item>
@@ -60,13 +96,12 @@
                 <item name="wysiwyg" xsi:type="boolean">true</item>
                 <item name="dataScope" xsi:type="string">content</item>
                 <item name="sortOrder" xsi:type="number">10</item>
-                <item name="rows" xsi:type="number">8</item>
                 <item name="validation" xsi:type="array">
                     <item name="required-entry" xsi:type="boolean">true</item>
                 </item>
             </item>
         </argument>
-     </field>
+    </field>
     <field name="categories_id">
         <argument name="data" xsi:type="array">
             <item name="options" xsi:type="object">Neklo\News\Model\ResourceNews\Categories\Collection</item>

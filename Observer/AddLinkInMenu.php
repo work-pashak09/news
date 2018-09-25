@@ -8,18 +8,27 @@ use Magento\Framework\Event\ObserverInterface;
 
 class AddLinkInMenu implements ObserverInterface
 {
+    private $config;
+
+    public function __construct(
+        \Neklo\News\Helper\Config $config
+    ) {
+        $this->config = $config;
+    }
 
     public function execute(EventObserver $observer)
     {
-        $menu = $observer->getMenu();
-        $tree = $menu->getTree();
-        $data = [
-            'name' => __('Links on news'),
-            'id' => 'some-unique-id-here',
-            'url' => 'block'
-        ];
-        $node = new Node($data, 'id', $tree, $menu);
-        $menu->addChild($node);
+        if ($this->config->isActivUrlInMavigation()) {
+            $menu = $observer->getMenu();
+            $tree = $menu->getTree();
+            $data = [
+                'name' => __($this->config->getNameUrlInMavigation()),
+                'id' => 'some-unique-id-here',
+                'url' => 'block'
+            ];
+            $node = new Node($data, 'id', $tree, $menu);
+            $menu->addChild($node);
+        }
         return $this;
     }
 }

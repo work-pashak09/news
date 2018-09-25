@@ -4,8 +4,8 @@ namespace Neklo\News\Controller\Adminhtml\Article;
 
 use Magento\Backend\App\Action;
 
-class MassDelete extends  \Neklo\News\Controller\Adminhtml\MassectionAction\AbstractMassDeleteItems {
-
+class MassDelete extends \Neklo\News\Controller\Adminhtml\MassectionAction\AbstractMassDeleteItems
+{
 
     private $collectionFactory;
 

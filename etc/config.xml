@@ -11,7 +11,7 @@
         <url>
             <url_filds>
                 <def_url>news</def_url>
-                <pref_url>.html</pref_url>
+                <pref_url>.xml</pref_url>
             </url_filds>
         </url>
         <links>
@@ -23,6 +23,10 @@
                 <is_activ>1</is_activ>
                 <title_url>Go to news</title_url>
             </links_control_footer_link>
+            <links_control_navigation>
+                <is_activ>1</is_activ>
+                <title_url>Go to news</title_url>
+            </links_control_navigation>
         </links>
     </default>
 </config>

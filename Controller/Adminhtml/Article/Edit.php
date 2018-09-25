@@ -13,7 +13,7 @@ class Edit extends \Magento\Backend\App\Action
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Neklo\News\Model\News $model,
+        \Neklo\News\Model\NewsFactory $model,
         \Magento\Framework\Registry $registry
     ) {
         parent::__construct($context);
@@ -25,12 +25,12 @@ class Edit extends \Magento\Backend\App\Action
     public function execute()
     {
         $param = $this->getRequest()->getParam('id');
-        if (is_numeric($param) && $this->model->getOne($param)->getData()) {
+        if (is_numeric($param) && $this->model->create()->load($param, 'id')->getData()) {
             $this->registry->register('id', $param);
             $resultPage = $this->resultPageFactory->create();
             $resultPage->getConfig()->getTitle()->prepend((__('Edit new')));
         } else {
-            $resultPage = $this->resultPageFactory->create();
+            return $this->_redirect('news/article');
         }
         return $resultPage;
     }

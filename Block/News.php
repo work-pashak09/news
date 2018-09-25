@@ -25,18 +25,29 @@ class News extends \Magento\Framework\View\Element\Template
     public function getNews()
     {
         $newsModel = $this->collectionFactory->create();
-        $newsModel->getSelect()->joinLeft(['second' => 'cms_categories_news'],
-            'main_table.categories_id = second.id');
+        $newsModel
+            ->getSelect()->
+            joinLeft(
+                [
+                    'second' => 'cms_categories_news'
+                ],
+                'main_table.categories_id = second.id'
+            );
         return $newsModel->getData();
     }
 
-    public function GetNameTable(){
-      return  $this->config->getNameTable();
+    public function GetNameTable()
+    {
+        return $this->config->getNameTable();
     }
-    public function getPrefixUrl(){
-      return  $this->config->getPrifixUrl();
+
+    public function getPrefixUrl()
+    {
+        return $this->config->getPrifixUrl();
     }
-    public function getUrlNews(){
-      return  $this->config->getUrlNews();
+
+    public function getUrlNews()
+    {
+        return $this->config->getUrlNews();
     }
 }

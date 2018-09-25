@@ -29,6 +29,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="submit_url" xsi:type="url" path="news/categories/save"/>
+                    <item name="validate_url" xsi:type="url" path="news/categories/validate"/>
                 </item>
             </argument>
         </argument>
@@ -38,7 +39,6 @@
             </item>
         </argument>
     </dataSource>
-
     <field name="categoria">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
@@ -46,6 +46,12 @@
                 <item name="label" xsi:type="string" translate="true">categories</item>
                 <item name="formElement" xsi:type="string">input</item>
                 <item name="dataScope" xsi:type="string">categoria</item>
+                <item name="validation" xsi:type="array">
+                    <item name="required-entry" xsi:type="boolean">true</item>
+                    <item name="no-whitespace" xsi:type="boolean">true</item>
+                    <item name="stripped-min-length" xsi:type="string">4</item>
+                    <item name="pattern" xsi:type="string">[0-9,a-z,A-Z,-]{4,}</item>
+                </item>
             </item>
         </argument>
     </field>

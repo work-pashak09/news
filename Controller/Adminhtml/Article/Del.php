@@ -31,5 +31,4 @@ class Del extends \Magento\Backend\App\Action
         $this->messageManager->addSuccess(__('Delete sucses'));
         $this->_redirect('article/index');
     }
-
 }
