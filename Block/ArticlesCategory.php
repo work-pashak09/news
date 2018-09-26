@@ -5,7 +5,7 @@ namespace Neklo\News\Block;
 
 use Magento\Framework\View\Element\Template;
 
-class ShowCatNews extends \Magento\Framework\View\Element\Template
+class ArticlesCategory extends \Magento\Framework\View\Element\Template
 {
     private $collectionFactory;
     private $registry;
@@ -34,12 +34,9 @@ class ShowCatNews extends \Magento\Framework\View\Element\Template
     {
         $col = $this->collectionFactory->create();
 
-        $col->addFieldToFilter('categories_id', $this->getCategory()->getId());
+        $col->addFieldToFilter('category_id', $this->getCategory()->getId());
 
-        //var_dump($col->getData());
-        //exit;
-
-        return $col->getData();
+        return $col;
     }
 
     public function getCategory()
@@ -47,14 +44,18 @@ class ShowCatNews extends \Magento\Framework\View\Element\Template
         return $this->registry->registry('current_news_category');
     }
 
-
-
-    public function getPartUrlNews(){
-        return $this->registry->registry('partUrl');
+    public function getPartUrlNews()
+    {
+        return $this->escapeUrl("/{$this->registry->registry('partUrl')}/");
     }
 
+    public function getPrefix()
+    {
+        return $this->config->getPrifixUrl();
+    }
 
-    public function getPrefix(){
-      return $this->config->getPrifixUrl();
+    public function getAticleWithCatategory($urlKey)
+    {
+        return $this->escapeUrl("/{$this->getCategory()->getCategory()}/$urlKey{$this->getPrefix()}");
     }
 }

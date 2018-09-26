@@ -4,15 +4,15 @@ namespace Neklo\News\Helper;
 
 class Config extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const IS_ENABLED = 'news/news/is_enabled';
-    const NAME_TABLE = 'news/news/name_table';
-    const BASE_URL = 'url/url_filds/def_url';
-    const PRIFIX_URL = 'url/url_filds/pref_url';
-    const IS_SHOW_HEADER_LINKS = 'links/linksShow/header';
-    const IS_SHOW_FOOTER_LINKS = 'links/linksShow/footer';
-    const MENU_IN_NAVIGATION = 'links/links_control_navigation/';
+    const IS_ENABLED = 'news/article_link/is_enabled';
+    const NAME_TABLE = 'news/article_link/name_table_all_news';
+    const BASE_URL = 'news/settings_list_article/default_link_news';
+    const PRIFIX_URL = 'news/settings_list_article/pref_url';
+    const IS_SHOW_HEADER_LINKS = 'news/contol_links_header/header';
+    const IS_SHOW_FOOTER_LINKS = 'news/links_control_footer_link/footer';
+    const MENU_IN_NAVIGATION = 'news/links_control_navigation/';
 
-    public function getIsEnabled()
+    public function isEnabledLinkOnNews()
     {
         return $this->isFlag(self::IS_ENABLED);
     }
@@ -22,14 +22,14 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
         return $this->getValue(self::PRIFIX_URL);
     }
 
-    public function getNameUrlInMavigation()
+    public function getNameUrlInNavigation()
     {
-        return $this->getValue(self::MENU_IN_NAVIGATION.'title_url');
+        return $this->getValue(self::MENU_IN_NAVIGATION . 'title_url');
     }
 
-    public function isActivUrlInMavigation()
+    public function isShowUrlInNavigation()
     {
-        return $this->getValue(self::MENU_IN_NAVIGATION.'is_activ');
+        return $this->getValue(self::MENU_IN_NAVIGATION . 'is_active');
     }
 
     public function getNameTable()

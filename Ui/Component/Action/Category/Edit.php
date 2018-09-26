@@ -1,14 +1,13 @@
 <?php
 
-
-namespace Neklo\News\Ui\Component\Action;
+namespace Neklo\News\Ui\Component\Action\Category;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
-class ActionCategories extends Column
+class Edit extends Column
 {
     /**
      * @var UrlInterface

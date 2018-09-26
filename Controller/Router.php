@@ -13,6 +13,7 @@ class Router implements \Magento\Framework\App\RouterInterface
     private $redirect;
     private $rewrite;
     private $finder;
+    private $parserUrl;
 
     public function __construct(
         \Magento\Framework\App\ActionFactory $actionFactory,
@@ -24,7 +25,8 @@ class Router implements \Magento\Framework\App\RouterInterface
         \Magento\Framework\Registry $registry,
         \Magento\Framework\App\Action\RedirectFactory $redirect,
         \Magento\UrlRewrite\Model\UrlRewrite $rewrite,
-        \Magento\UrlRewrite\Model\UrlFinderInterface $finder
+        \Magento\UrlRewrite\Model\UrlFinderInterface $finder,
+        \Neklo\News\Helper\ParserUrl $parserUrl
     ) {
         $this->actionFactory = $actionFactory;
         $this->response = $response;
@@ -36,69 +38,61 @@ class Router implements \Magento\Framework\App\RouterInterface
         $this->redirect = $redirect;
         $this->rewrite = $rewrite;
         $this->finder = $finder;
+        $this->parserUrl = $parserUrl;
     }
 
     public function match(\Magento\Framework\App\RequestInterface $request)
     {
-        $identifier = explode('/', trim($request->getPathInfo(), '/'));
-        if ($identifier[0] == $this->config->getUrlNews()) {
-            $this->registry->register('partUrl', $this->config->getUrlNews());
-
-            if ($this->config->getIsEnabled()) {
-                $countParts = count($identifier);
-                if ($countParts === 1) {
-                    $request->setModuleName('news')->setControllerName('index')->setActionName('index');
-                } else {
-                    $cat = $this->categoriesFactory->create()->load($identifier[1], 'categoria');
-                    if (!$cat->getId() || !$cat->getData('is_activ')) {
+        $partUrl = explode('/', trim($request->getPathInfo(), '/'));
+        list($moduleName, $controllerName, $actionName) = ['news', 'index', 'index'];
+        foreach ($partUrl as $index => $value) {
+            switch ($index) {
+                case 0:
+                    if ($this->config->getUrlNews() !== $partUrl[$index]) {
+                        return null;
+                    } elseif (!$this->config->isEnabledLinkOnNews()) {
                         return $this->redirectMainPage($request);
-                    } else {
-                        if ($countParts === 2) {
-                            $request->setModuleName('news')
-                                ->setControllerName('ShowCatNews')
-                                ->setActionName('index')
-                                ->setParam('cat_id', $cat->getId());
-                        } else {
-                            if ($countParts == 3) {
-                                $prefix = $this->config->getPrifixUrl();
-                                if (strpos($identifier[2], $prefix) !== false) {
-                                    $identifier[2] = str_replace($prefix, '', $identifier[2]);
-                                    $news = $this->news->getCollection();
-                                    $news->getSelect()->joinLeft([
-                                        'second' => 'cms_categories_news'
-                                    ], 'main_table.categories_id = second.id');
-                                    $news = $news->addFieldToFilter('url_key', $identifier[2])->getData();
-                                    if ($news) {
-                                        $this->registry->register('article', $news[0]);
-                                        $request->setModuleName('news')
-                                            ->setControllerName('view')
-                                            ->setActionName('index');
-                                        return $this->actionFactory
-                                            ->create(\Magento\Framework\App\Action\Forward::class);
-                                    } else {
-                                        return $this->redirectMainPage($request);
-                                    }
-                                } else {
-                                    return $this->redirectMainPage($request);
-                                }
-                            } else {
-                                return $this->redirectMainPage($request);
-                            }
-                        }
                     }
-                }
+                    break;
+                case 1:
+                    $cat = $this->categoriesFactory->create()->load($value, 'category');
+                    if (!$cat->getId() || !$cat->getData('is_active')) {
+                        return $this->redirectMainPage($request);
+                    }
+                    $controllerName = 'ShowArticlesCategory';
+                    $request->setParam('cat_id', $cat->getId());
+                    break;
+                case 2:
+                    $prefix = $this->config->getPrifixUrl();
+                    if (strpos($value, $prefix) === false) {
+                        return $this->redirectMainPage($request);
+                    }
+                    $value = str_replace($prefix, '', $value);
+                    $news = $this->news->load($value, 'url_key');
+                    if (!$news->getId()) {
+                        return $this->redirectMainPage($request);
+                    } elseif (!$news->getData('is_active')) {
+                        $this->redirectCategoriesList($request, $cat->getCategory());
+                    }
+                    $this->registry->register('article', $news);
+                    $controllerName = 'view';
+                    break;
             }
         }
-
-        else {
-            return null;
-        }
+        $request->setModuleName($moduleName)->setControllerName($controllerName)->setActionName($actionName);
         return $this->actionFactory->create(\Magento\Framework\App\Action\Forward::class);
     }
 
     public function redirectMainPage($request)
     {
         $this->response->setRedirect("/{$this->config->getUrlNews()}");
+        $request->setDispatched(true);
+        return $this->actionFactory->create(\Magento\Framework\App\Action\Redirect::class);
+    }
+
+    public function redirectCategoriesList($request, $nameCategory)
+    {
+        $this->response->setRedirect("/{$this->config->getUrlNews()}/$nameCategory");
         $request->setDispatched(true);
         return $this->actionFactory->create(\Magento\Framework\App\Action\Redirect::class);
     }

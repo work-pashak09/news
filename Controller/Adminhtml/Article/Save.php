@@ -17,7 +17,6 @@ class Save extends \Magento\Backend\App\Action
     private $config;
     private $persist;
 
-
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Neklo\News\Model\NewsFactory $newsFactory,
@@ -60,11 +59,11 @@ class Save extends \Magento\Backend\App\Action
             $this->messageManager->addError(__('id not find'));
             return $this->_redirect("news/article/edit/id/{$model->getId()}");
         }
-        $category = $this->categoryFactory->create()->load($model->getData('categories_id'));
+        $category = $this->categoryFactory->create()->load($model->getData('category_id'));
         if ($model->getData('url_key') !== $post['url_key']) {
             $iscloset = $this->collectionFactory->create()
                 ->addFieldToFilter('url_key', $post['url_key'])
-                ->addFieldToFilter('categories_id', $model->getData('categories_id'))
+                ->addFieldToFilter('category_id', $model->getData('category_id'))
                 ->getFirstItem()
                 ->getData();
             if ($iscloset) {
@@ -79,11 +78,11 @@ class Save extends \Magento\Backend\App\Action
                     ->setEntityType('Neklo_news')
                     ->setEntityId($model->getData('id'))
                     //current url
-                    ->setRequestPath("$partUrlNews/{$category->getData('categoria')}/{$model->getData('url_key')}$pref")
+                    ->setRequestPath("$partUrlNews/{$category->getData('category')}/{$model->getData('url_key')}$pref")
                     //redirect
-                    ->setTargetPath("$partUrlNews/{$category->getData('categoria')}/{$post['url_key']}$pref")
+                    ->setTargetPath("$partUrlNews/{$category->getData('category')}/{$post['url_key']}$pref")
                     ->setRedirectType(301)
-                    ->setMetadata(['categoria_id' => $model->getData('categoria')])
+                    ->setMetadata(['category_id' => $model->getData('category')])
                     ->save();
                 unset($post['rewrite_url']);
             } else {

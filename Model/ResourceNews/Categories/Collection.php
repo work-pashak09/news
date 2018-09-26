@@ -33,7 +33,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function toOptionArray()
     {
-        return $this->_toOptionArray('id', 'categoria');
+        return $this->_toOptionArray('id', 'category');
     }
 
     /**
@@ -43,7 +43,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function toOptionHash()
     {
-        return $this->_toOptionHash('id', 'categoria');
+        return $this->_toOptionHash('id', 'category');
     }
 
 }

@@ -110,17 +110,17 @@
                 </item>
             </argument>
         </selectionsColumn>
-        <column name="categoria">
+        <column name="category">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="resizeEnabled" xsi:type="boolean">true</item>
                     <item name="sortOrder" xsi:type="number">20</item>
-                    <item name="label" xsi:type="string" translate="true">categoria</item>
+                    <item name="label" xsi:type="string" translate="true">category</item>
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Neklo\News\Ui\Component\Action\ActionCategories">
+        <actionsColumn name="actions" class="Neklo\News\Ui\Component\Action\Category\Edit">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="indexField" xsi:type="string">id</item>

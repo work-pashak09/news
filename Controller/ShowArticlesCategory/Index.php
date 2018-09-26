@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Neklo\News\Controller\ShowCatNews;
+namespace Neklo\News\Controller\ShowArticlesCategory;
 
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
@@ -30,7 +30,7 @@ class Index extends \Magento\Framework\App\Action\Action
             $this->_request->getParam('cat_id')
         );
         if (!$cat->getData()) {
-            $this->messageManager->addErrorMessage(__('Not found categoria'));
+            $this->messageManager->addErrorMessage(__('Not found category'));
             return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('news');
         }
         $this->registry->register('current_news_category', $cat);

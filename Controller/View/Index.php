@@ -11,6 +11,8 @@ class Index extends \Magento\Framework\App\Action\Action
     private $registry;
     private $config;
 
+    private $var_dump;
+
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
@@ -28,8 +30,9 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
 
-        $idPost = $this->_request->getParam('id', null);
 
+
+        $idPost = $this->_request->getParam('id', null);
         if (!$this->registry->registry('article') && !$idPost) {
             return $this->_redirect('*/index');
         } else {
@@ -38,12 +41,13 @@ class Index extends \Magento\Framework\App\Action\Action
                     ->getCollection();
                 $model->getSelect()
                     ->joinLeft([
-                        'second' => 'cms_categories_news'
+                        'second' => 'neklo_news_category'
                         ],
-                        'main_table.categories_id = second.id'
+                        'main_table.category_id = second.id'
                     );
-                $news = $model->addFieldToFilter('main_table.id', $idPost)->getData();
-                if (!$news) {
+                $news = $model->addFieldToFilter('main_table.id', $idPost);
+
+                if (!$news->getId()) {
                     return $this->_redirect('*/index');
                 }
                 $this->registry->register('partUrl', $this->config->getUrlNews());

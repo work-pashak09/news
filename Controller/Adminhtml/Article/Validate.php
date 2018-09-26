@@ -37,7 +37,7 @@ class Validate extends \Magento\Backend\App\Action
             'url_key' => 'length field for name link title must to be 3 to 15 symbols',
             'title' => 'length field for title must to be 3 to 15 symbols',
             'content' => 'length field for content must to be 3 to 15 symbols',
-            'categories_id' => 'something went wrong',
+            'category_id' => 'something went wrong',
             'id' => 'something went wrong',
         ];
         if ($data) {

@@ -29,14 +29,14 @@ class News extends \Magento\Framework\View\Element\Template
             ->getSelect()->
             joinLeft(
                 [
-                    'second' => 'cms_categories_news'
+                    'second' => 'neklo_news_category'
                 ],
-                'main_table.categories_id = second.id'
+                'main_table.category_id = second.id'
             );
-        return $newsModel->getData();
+        return $newsModel;
     }
 
-    public function GetNameTable()
+    public function getNameTable()
     {
         return $this->config->getNameTable();
     }
@@ -49,5 +49,10 @@ class News extends \Magento\Framework\View\Element\Template
     public function getUrlNews()
     {
         return $this->config->getUrlNews();
+    }
+
+    public function getUrlArticle($cat, $urlKey)
+    {
+        return $this->escapeUrl("/{$this->getUrlNews()}/$cat/$urlKey{$this->getPrefixUrl()}");
     }
 }

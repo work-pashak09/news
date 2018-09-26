@@ -1,21 +1,8 @@
 <?php
 /** @var \Neklo\News\Block\Views $block */
-$data = $block->getOneNews();
-?>
-<p><?= $data['title'] ?></p>
-<p><?= $data['content'] ?></p>
-<p><?= $data['creation_time'] ?></p>
-
-<a href="<?= "/{$data['partUrl']}/{$data['categoria']}" ?>">go to in selection
-    <?php switch ($data['categories_id']) {
-        case '2':
-            echo 'sport';
-            break;
-        case '1':
-            echo 'crash';
-            break;
-}
-?>
-</a>
+$data = $block->getOneNews();?>
+<p><?= $data->getTitle() ?></p>
+<p><?= $data->getContent() ?></p>
+<a href="<?= $block->generalUrl()?>">go to in selection <?=$data->getCategory()?></a>
 
 

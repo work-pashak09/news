@@ -2,32 +2,25 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Neklo_News::article"
+        <add id="Neklo_News::index"
              title="News"
              module="Neklo_News"
              sortOrder="0"
              parent="Magento_Backend::content"
-             resource="Neklo_News::article"/>
-
-        <add id="Neklo_News::index"
+             resource="Neklo_News::manage_article"/>
+        <add id="Neklo_News::articles"
              title="Manage Articles"
              module="Neklo_News"
              sortOrder="10"
              action="news/article/index"
-             parent="Neklo_News::article" resource="Neklo_News::article"/>
-
+             parent="Neklo_News::index"
+             resource="Neklo_News::manage_article"/>
         <add id="Neklo_News::categories"
-             title="News"
-             module="Neklo_News"
-             sortOrder="0"
-             parent="Magento_Backend::content"
-             resource="Neklo_News::article"/>
-
-        <add id="Neklo_News::ca"
              title="Manage Categories"
              module="Neklo_News"
              sortOrder="10"
              action="news/categories/index"
-             parent="Neklo_News::article" resource="Neklo_News::article"/>
+             parent="Neklo_News::index"
+             resource="Neklo_News::manage_article"/>
     </menu>
 </config>

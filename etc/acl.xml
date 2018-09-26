@@ -5,20 +5,20 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
-                    <resource id="Neklo_News::article" title="News" sortOrder="0">
-                        <resource id="Neklo_News::delete" title="Delete Articles" sortOrder="0"/>
-                        <resource id="Neklo_News::save" title="Save Articles" sortOrder="0"/>
+                    <resource id="Neklo_News::manage_article" title="News" sortOrder="0">
+                        <resource id="Neklo_News::article_delete" title="Delete Articles" sortOrder="0"/>
+                        <resource id="Neklo_News::article_save" title="Save Articles" sortOrder="0"/>
                     </resource>
                     <resource id="Neklo_News::categories" title="News" sortOrder="0">
-                        <resource id="Neklo_News::delete_categories" title="Delete Categories" sortOrder="0"/>
-                        <resource id="Neklo_News::save_categories" title="Save Categories" sortOrder="0"/>
+                        <resource id="Neklo_News::categories_delete" title="Delete Categories" sortOrder="0"/>
+                        <resource id="Neklo_News::categories_save" title="Save Categories" sortOrder="0"/>
                     </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Neklo_News::config_tab" title="Neklo" translate="title">
-                                <resource id="Neklo_News::news_section" title="News" translate="title"/>
+                            <resource id="Neklo_News::config_table" title="Neklo" translate="title">
+                                <resource id="Neklo_News::article_block" title="News" translate="title"/>
                             </resource>
                         </resource>
                     </resource>

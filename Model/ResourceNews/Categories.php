@@ -20,6 +20,6 @@ class Categories extends AbstractDb
 
     protected function _construct()
     {
-        $this->_init('cms_categories_news', 'id');
+        $this->_init('neklo_news_category', 'id');
     }
 }

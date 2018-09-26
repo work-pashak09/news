@@ -3,30 +3,26 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <news>
-            <news>
+            <article_link>
                 <is_enabled>1</is_enabled>
-                <name_table>List block news</name_table>
-            </news>
-        </news>
-        <url>
-            <url_filds>
-                <def_url>news</def_url>
-                <pref_url>.xml</pref_url>
-            </url_filds>
-        </url>
-        <links>
-            <links_control_header_link>
-                <is_activ>1</is_activ>
+                <name_table_all_news>List block news</name_table_all_news>
+            </article_link>
+            <contol_links_header>
+                <is_active>1</is_active>
                 <title_url>Main</title_url>
-            </links_control_header_link>
+            </contol_links_header>
             <links_control_footer_link>
-                <is_activ>1</is_activ>
+                <is_active>1</is_active>
                 <title_url>Go to news</title_url>
             </links_control_footer_link>
             <links_control_navigation>
-                <is_activ>1</is_activ>
+                <is_active>1</is_active>
                 <title_url>Go to news</title_url>
             </links_control_navigation>
-        </links>
+            <settings_list_article>
+                <default_link_news>news</default_link_news>
+                <pref_url>.xml</pref_url>
+            </settings_list_article>
+        </news>
     </default>
 </config>

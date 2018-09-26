@@ -1,37 +1,22 @@
 <?php /** @var \Neklo\News\Block\News $block */ ?>
-
-
-
 <table border="1px">
     <thead>
     <tr>
-        <td>№</td>
         <td>title</td>
         <td>content</td>
-        <td>creation_time</td>
-        <td>update_time</td>
         <td>is_active</td>
         <td>look</td>
     </tr>
     </thead>
     <tbody>
-    <?php
-    $data = $block->getNews();
-    $prefix = $block->getPrefixUrl();
-    $nameNews = $block->getUrlNews();
-    ?>
-
-    <h2><?=$block->GetNameTable()?></h2>
-    <?php foreach ($data as $index => $item) : ?>
-    <tr>
-    <td><?=($index+1)?></td>
-    <td><?=$item['title']?></td>
-    <td><?=$item['content']?></td>
-    <td><?=$item['creation_time']?></td>
-    <td><?=$item['update_time']?></td>
-    <td><?=$item['is_active']?></td> 
-    <td><a target="_blank" href="<?="/$nameNews/{$item['categoria']}/{$item['url_key']}$prefix"?>">look</td>
-    </tr>
+    <h2><?= $block->getNameTable() ?></h2>
+    <?php foreach ($block->getNews() as $item) : ?>
+        <tr>
+            <td><?= $item->getTitle() ?></td>
+            <td><?= $item->getContent() ?></td>
+            <td><?= $item->getData('is_active') ?></td>
+            <td><a target="_blank" href="<?= $block->getUrlArticle($item->getCategory(), $item->getData('url_key')) ?>">look</td>
+        </tr>
     <?php endforeach; ?>
     </tbody>
 </table>

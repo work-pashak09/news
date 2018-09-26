@@ -20,6 +20,6 @@ class News extends AbstractDb
 
     protected function _construct()
     {
-        $this->_init('cms_news', 'id');
+        $this->_init('neklo_news', 'id');
     }
 }

@@ -125,7 +125,7 @@
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Neklo\News\Ui\Component\Action\ActionNews">
+        <actionsColumn name="actions" class="Neklo\News\Ui\Component\Action\Article\Edit">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="indexField" xsi:type="string">id</item>

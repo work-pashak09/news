@@ -41,21 +41,21 @@ class Validate extends \Magento\Backend\App\Action
         $data = $this->_request->getParams();
         $error = [];
         $myError = [
-            'categoria' => 'length field for categoria must to be 3 to 15 symbols',
+            'category' => 'length field for category must to be 3 to 15 symbols',
             'id' => 'something went wrong',
         ];
         if ($data) {
-            if (!isset($data['categoria']) || !$data['categoria']) {
-                $error[] = $myError['categoria'];
+            if (!isset($data['category']) || !$data['category']) {
+                $error[] = $myError['category'];
             }
             if (!isset($data['id']) || !is_numeric($data['id'])) {
                 $error[] = 'something went wrong';
             }
             /** @var \Neklo\News\Model\Categories $model */
             $model = $this->modelFactory->create();
-            $iscloset = $model->load($data['categoria'], 'categoria');
+            $iscloset = $model->load($data['category'], 'category');
             if ($iscloset) {
-                $error[] = "it's name categoria is busy";
+                $error[] = "it's name category is busy";
             }
         } else {
             $error[] = 'something went wrong';

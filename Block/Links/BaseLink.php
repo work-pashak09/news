@@ -21,8 +21,7 @@ class BaseLink extends \Magento\Framework\View\Element\Html\Link
     public function _toHtml()
     {
         $configPuth = $this->getData('config_path');
-
-        $isShow = $this->config->getValue("{$configPuth}/is_activ", \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $isShow = $this->config->getValue("{$configPuth}/is_active", \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         if ($isShow) {
             $this->setAttribute(
                 'label',
@@ -32,7 +31,7 @@ class BaseLink extends \Magento\Framework\View\Element\Html\Link
             if ($configPuth == 'links/links_control_footer_link') {
                 $this->setAttribute(
                     'path',
-                    $this->config->getValue("url/url_filds/def_url")
+                    $this->config->getValue("url/settings_list_article/default_link_news")
                 );
             }
             return parent:: _toHtml();

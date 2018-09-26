@@ -102,11 +102,11 @@
             </item>
         </argument>
     </field>
-    <field name="categories_id">
+    <field name="category_id">
         <argument name="data" xsi:type="array">
             <item name="options" xsi:type="object">Neklo\News\Model\ResourceNews\Categories\Collection</item>
             <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Type Categoria</item>
+                <item name="label" xsi:type="string" translate="true">Type category</item>
                 <item name="visible" xsi:type="boolean">true</item>
                 <item name="dataType" xsi:type="string">text</item>
                 <item name="formElement" xsi:type="string">select</item>

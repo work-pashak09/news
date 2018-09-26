@@ -21,7 +21,7 @@ class Index extends \Magento\Framework\App\Action\Action
 
     public function execute()
     {
-        if ($this->helper->getIsEnabled()) {
+        if ($this->helper->isEnabledLinkOnNews()) {
             $resultPage = $this->resultPageFactory->create();
             return $resultPage;
         } else {

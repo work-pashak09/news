@@ -23,10 +23,10 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     private function addCategoryData()
     {
         $this->join(
-            ['cat' => $this->getTable('cms_categories_news')],
-            'main_table.categories_id = cat.id',
+            ['cat' => $this->getTable('neklo_news_category')],
+            'main_table.category_id = cat.id',
             [
-                'aaaa' => 'cat.categoria'
+                'aaaa' => 'cat.category'
             ]
         );
         return $this;
