@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: php
- * Date: 06.09.18
- * Time: 13:41
- */
 
 namespace Neklo\News\Controller\Adminhtml\Article;
 

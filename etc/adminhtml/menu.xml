@@ -19,7 +19,7 @@
              title="Manage Categories"
              module="Neklo_News"
              sortOrder="10"
-             action="news/categories/index"
+             action="news/category/index"
              parent="Neklo_News::index"
              resource="Neklo_News::manage_article"/>
     </menu>

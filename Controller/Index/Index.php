@@ -12,9 +12,9 @@ class Index extends \Magento\Framework\App\Action\Action
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Neklo\News\Helper\Config $helper
+        \Neklo\News\Helper\Config $config
     ) {
-        $this->helper = $helper;
+        $this->helper = $config;
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
     }

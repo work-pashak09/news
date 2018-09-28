@@ -45,7 +45,7 @@ class Edit extends Column
             foreach ($dataSource['data']['items'] as &$item) {
                 $item[$this->getData('name')]['edit'] = [
                     'href' => $this->urlBuilder->getUrl(
-                        'news/categories/edit/',
+                        'news/category/edit/',
                         ['id' => $item['id'], 'store' => $storeId]
                     ),
                     'label' => __('Edit'),

@@ -2,27 +2,27 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <news>
-            <article_link>
-                <is_enabled>1</is_enabled>
-                <name_table_all_news>List block news</name_table_all_news>
-            </article_link>
-            <contol_links_header>
-                <is_active>1</is_active>
-                <title_url>Main</title_url>
-            </contol_links_header>
-            <links_control_footer_link>
-                <is_active>1</is_active>
-                <title_url>Go to news</title_url>
-            </links_control_footer_link>
-            <links_control_navigation>
-                <is_active>1</is_active>
-                <title_url>Go to news</title_url>
-            </links_control_navigation>
-            <settings_list_article>
-                <default_link_news>news</default_link_news>
-                <pref_url>.xml</pref_url>
-            </settings_list_article>
-        </news>
+        <neklo>
+            <news>
+                <header_link>
+                    <is_active>1</is_active>
+                    <title_url>Main</title_url>
+                </header_link>
+                <footer_link>
+                    <is_active>1</is_active>
+                    <title_url>Go to news</title_url>
+                </footer_link>
+                <links_control_navigation>
+                    <is_active>1</is_active>
+                    <title_url>Go to news</title_url>
+                </links_control_navigation>
+                <settings_article_page>
+                    <default_link_article>news</default_link_article>
+                    <pref_url>.xml</pref_url>
+                    <is_enabled>1</is_enabled>
+                    <name_table_all_news>List block news</name_table_all_news>
+                </settings_article_page>
+             </news>
+        </neklo>
     </default>
 </config>

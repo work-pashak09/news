@@ -1,0 +1,14 @@
+<?php /** @var \Neklo\News\Block\ArticlesCategory $block */ ?>
+<?php if ($block->canShow()) : ?>
+    <h1 style="text-align: center"><?= $block->getCategory()->getCategory() ?></h1>
+    <br>
+    <a href="<?= $block->getPartUrlNews() ?>">Назад</a>
+    <?php $prefix = $block->getPrefix() ?>
+    <?php foreach ($block->getArticleCategory() as $article) : ?>
+        <div style="background-color: #dcdbdb; margin: 10px;text-align: center">
+            <p>Заголовок<span><?= $article->getTitle() ?></span></p>
+            <p>Контент<span><?= $article->getContent() ?></span></p>
+            <p><a href="<?= $block->getAticleWithCatategory($article->getData('url_key')) ?>">Смотреть</a></p>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

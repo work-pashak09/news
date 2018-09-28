@@ -7,25 +7,23 @@ class Router implements \Magento\Framework\App\RouterInterface
     private $actionFactory;
     private $config;
     private $response;
-    private $categoriesFactory;
+    private $categoryegoriesFactory;
     private $news;
     private $registry;
     private $redirect;
-    private $rewrite;
-    private $finder;
     private $parserUrl;
+    private $newsCollection;
 
     public function __construct(
         \Magento\Framework\App\ActionFactory $actionFactory,
         \Magento\Framework\App\ResponseInterface $response,
         \Neklo\News\Helper\Config $config,
-        \Neklo\News\Model\CategoriesFactory $categoriesFactory,
-        \Neklo\News\Model\News $news,
+        \Neklo\News\Model\CategoryFactory $categoryegoriesFactory,
+        \Neklo\News\Model\ArticleFactory $news,
+        \Neklo\News\Model\ResourceModel\Article\Collection $newsCollection,
         \Magento\Framework\Message\ManagerInterface $messageManager,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\App\Action\RedirectFactory $redirect,
-        \Magento\UrlRewrite\Model\UrlRewrite $rewrite,
-        \Magento\UrlRewrite\Model\UrlFinderInterface $finder,
         \Neklo\News\Helper\ParserUrl $parserUrl
     ) {
         $this->actionFactory = $actionFactory;
@@ -34,65 +32,89 @@ class Router implements \Magento\Framework\App\RouterInterface
         $this->messageManager = $messageManager;
         $this->config = $config;
         $this->registry = $registry;
-        $this->categoriesFactory = $categoriesFactory;
+        $this->categoriesFactory = $categoryegoriesFactory;
         $this->redirect = $redirect;
-        $this->rewrite = $rewrite;
-        $this->finder = $finder;
         $this->parserUrl = $parserUrl;
+        $this->newsCollection = $newsCollection;
     }
 
     public function match(\Magento\Framework\App\RequestInterface $request)
     {
-        $partUrl = explode('/', trim($request->getPathInfo(), '/'));
+        $partUrl = $this->parserUrl->parse();
+        $nameUrlArticleConfig = $this->config->getNameUrlLinkArticle();
+        $articleUrlConfigActiv = $this->config->isEnabledLinkOnNews();
+
+        if ($nameUrlArticleConfig !== $partUrl['linkList']) {
+            return null;
+        } elseif (!$articleUrlConfigActiv) {
+            return $this->redirect($request, 'index', 'article list is not available');
+        }
         list($moduleName, $controllerName, $actionName) = ['news', 'index', 'index'];
-        foreach ($partUrl as $index => $value) {
-            switch ($index) {
-                case 0:
-                    if ($this->config->getUrlNews() !== $partUrl[$index]) {
-                        return null;
-                    } elseif (!$this->config->isEnabledLinkOnNews()) {
-                        return $this->redirectMainPage($request);
+        switch (count($partUrl)) {
+            case 2:
+                $category = $this->categoriesFactory->create()->load($partUrl['nameCategory'], 'category');
+                if (!$category->getId()) {
+                    return $this->redirect(
+                        $request,
+                        $nameUrlArticleConfig,
+                        'this category is not found'
+                    );
+                } elseif (!$category->getData('is_active')) {
+                    return $this->redirect(
+                        $request,
+                        $nameUrlArticleConfig,
+                        "{$partUrl['nameCategory']} category is not available"
+                    );
+                }
+                $controllerName = 'category';
+                $actionName = 'view';
+                $request->setParam('cat_id', $category->getId());
+                break;
+            case 3:
+                $prefix = $this->config->getPrefixUrlActicle();
+                if (strpos($partUrl['urlArticle'], $prefix) === false) {
+                    $category = $this->categoriesFactory->create()->load($partUrl['nameCategory'], 'category');
+                    if ($category->getId() && $category->getData('is_active')) {
+                        $urlRequest = "$nameUrlArticleConfig/{$partUrl['nameCategory']}";
+                    } else {
+                        $urlRequest = "$nameUrlArticleConfig";
                     }
-                    break;
-                case 1:
-                    $cat = $this->categoriesFactory->create()->load($value, 'category');
-                    if (!$cat->getId() || !$cat->getData('is_active')) {
-                        return $this->redirectMainPage($request);
-                    }
-                    $controllerName = 'ShowArticlesCategory';
-                    $request->setParam('cat_id', $cat->getId());
-                    break;
-                case 2:
-                    $prefix = $this->config->getPrifixUrl();
-                    if (strpos($value, $prefix) === false) {
-                        return $this->redirectMainPage($request);
-                    }
-                    $value = str_replace($prefix, '', $value);
-                    $news = $this->news->load($value, 'url_key');
-                    if (!$news->getId()) {
-                        return $this->redirectMainPage($request);
-                    } elseif (!$news->getData('is_active')) {
-                        $this->redirectCategoriesList($request, $cat->getCategory());
-                    }
-                    $this->registry->register('article', $news);
-                    $controllerName = 'view';
-                    break;
-            }
+                    return $this->redirect(
+                        $request,
+                        $urlRequest,
+                        "this article is not found"
+                    );
+                }
+                $partUrl['urlArticle'] = str_replace($prefix, '', $partUrl['urlArticle']);
+                $news = $this->newsCollection->getDataArticle($partUrl['urlArticle'], $partUrl['nameCategory']);
+                if (!$news->getId()) {
+                    return $this->redirect($request, "$nameUrlArticleConfig", 'this article is not found');
+                } elseif (!$news->getData('nnc_is_active')) {
+                    $this->redirect(
+                        $request,
+                        "$nameUrlArticleConfig/{$news->getData('nnc_category')}",
+                        "{$partUrl['nameCategory']} category is not available"
+                    );
+                } elseif (!$news->getData('main_is_active')) {
+                    $this->redirect(
+                        $request,
+                        "$nameUrlArticleConfig/{$news->getData('nnc_category')}",
+                        "acticle is not available"
+                    );
+                }
+                $this->registry->register('article', $news);
+                $this->registry->register('partUrl', $nameUrlArticleConfig);
+                $controllerName = 'view';
+                break;
         }
         $request->setModuleName($moduleName)->setControllerName($controllerName)->setActionName($actionName);
         return $this->actionFactory->create(\Magento\Framework\App\Action\Forward::class);
     }
 
-    public function redirectMainPage($request)
+    public function redirect($request, $url, $message)
     {
-        $this->response->setRedirect("/{$this->config->getUrlNews()}");
-        $request->setDispatched(true);
-        return $this->actionFactory->create(\Magento\Framework\App\Action\Redirect::class);
-    }
-
-    public function redirectCategoriesList($request, $nameCategory)
-    {
-        $this->response->setRedirect("/{$this->config->getUrlNews()}/$nameCategory");
+        $this->messageManager->addErrorMessage($message);
+        $this->response->setRedirect("/$url");
         $request->setDispatched(true);
         return $this->actionFactory->create(\Magento\Framework\App\Action\Redirect::class);
     }

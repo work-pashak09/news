@@ -1,39 +1,34 @@
 <?php
 
-
 namespace Neklo\News\Controller\Adminhtml\Article;
 
 class Validate extends \Magento\Backend\App\Action
 {
-    private $resultJsonFactory;
-    private $response;
+    /** @var \Magento\Framework\DataObject */
+    private $dataObject;
+    /** @var \Magento\Framework\Registry */
     private $registry;
+
+    private $resultJsonFactory;
 
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
-        \Magento\Framework\View\LayoutFactory $layoutFactory,
-        \Magento\Framework\DataObject $response,
+        \Magento\Framework\DataObject $dataObject,
         \Magento\Framework\Registry $registry,
-        array $multipleAttributeList = []
+        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
     ) {
         parent::__construct($context);
-        $this->resultJsonFactory = $resultJsonFactory;
-        $this->layoutFactory = $layoutFactory;
-        $this->multipleAttributeList = $multipleAttributeList;
-        $this->return = $multipleAttributeList;
-        $this->response = $response;
+        $this->dataObject = $dataObject;
         $this->registry = $registry;
+        $this->resultJsonFactory = $resultJsonFactory;
     }
-
-    /**
+    /*
      * @return \Magento\Framework\Controller\ResultInterface
      */
-
-    public function cheakError($data)
+    public function cheakPostData($data)
     {
-        $error = [];
-        $myError = [
+        $errorMessage = [];
+        $errorList = [
             'url_key' => 'length field for name link title must to be 3 to 15 symbols',
             'title' => 'length field for title must to be 3 to 15 symbols',
             'content' => 'length field for content must to be 3 to 15 symbols',
@@ -41,28 +36,25 @@ class Validate extends \Magento\Backend\App\Action
             'id' => 'something went wrong',
         ];
         if ($data) {
-            foreach ($myError as $nameRul => $value) {
+            foreach ($errorList as $nameRul => $value) {
                 if (!isset($data[$nameRul]) || !$data[$nameRul]) {
-                    $error[] = $value;
+                    $errorMessage[] = $value;
                 }
             }
         } else {
-            $error[] = 'something went wrong';
+            $errorMessage[] = 'something went wrong';
         }
-        return $error;
+        return $errorMessage;
     }
 
     public function execute()
     {
         $data = $this->_request->getParams();
-        $error = $this->cheakError($data);
-        if ($error) {
-            $this->response->setError(true);
-
-            $this->response->setMessages(
-                $error
-            );
+        $errorMessage = $this->cheakPostData($data);
+        if ($errorMessage) {
+            $this->dataObject->setError(true);
+            $this->dataObject->setMessages($errorMessage);
         }
-        return $this->resultJsonFactory->create()->setData($this->response);
+        return $this->resultJsonFactory->create()->setData($this->dataObject);
     }
 }

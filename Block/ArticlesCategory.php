@@ -1,19 +1,21 @@
 <?php
 
-
 namespace Neklo\News\Block;
 
 use Magento\Framework\View\Element\Template;
 
 class ArticlesCategory extends \Magento\Framework\View\Element\Template
 {
+    /** @var \Neklo\News\Model\ResourceModel\Article\CollectionFactory  */
     private $collectionFactory;
+    /** @var \Magento\Framework\Registry  */
     private $registry;
+    /** @var \Neklo\News\Helper\Config  */
     private $config;
 
     public function __construct(
         Template\Context $context,
-        \Neklo\News\Model\ResourceNews\News\CollectionFactory $collectionFactory,
+        \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory,
         \Neklo\News\Helper\Config $config,
         \Magento\Framework\Registry $registry,
         array $data = []
@@ -30,32 +32,33 @@ class ArticlesCategory extends \Magento\Framework\View\Element\Template
         return $category && $category->getId();
     }
 
-    public function getNewsCat()
+    /**
+     * @return \Neklo\News\Model\ResourceModel\Article\CollectionFactory
+     */
+    public function getArticleCategory()
     {
-        $col = $this->collectionFactory->create();
-
-        $col->addFieldToFilter('category_id', $this->getCategory()->getId());
-
-        return $col;
+        $coleecttin = $this->collectionFactory->create()
+            ->addFieldToFilter('category_id', $this->getCategory()->getId());
+        return $coleecttin;
     }
 
     public function getCategory()
     {
-        return $this->registry->registry('current_news_category');
+        return $this->registry->registry('article_category');
     }
 
     public function getPartUrlNews()
     {
-        return $this->escapeUrl("/{$this->registry->registry('partUrl')}/");
+        return $this->escapeUrl("/{$this->config->getNameUrlLinkArticle()}/");
     }
 
     public function getPrefix()
     {
-        return $this->config->getPrifixUrl();
+        return $this->config->getPrefixUrlActicle();
     }
 
     public function getAticleWithCatategory($urlKey)
     {
-        return $this->escapeUrl("/{$this->getCategory()->getCategory()}/$urlKey{$this->getPrefix()}");
+        return $this->escapeUrl("/{$this->config->getNameUrlLinkArticle()}/{$this->getCategory()->getCategory()}/$urlKey{$this->getPrefix()}");
     }
 }

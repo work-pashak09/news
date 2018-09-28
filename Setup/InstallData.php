@@ -12,8 +12,8 @@ class InstallData implements InstallDataInterface
     private $catFactory;
 
     public function __construct(
-        \Neklo\News\Model\NewsFactory $newsFactory,
-        \Neklo\News\Model\CategoriesFactory $catFactory
+       \Neklo\News\Model\ArticleFactory $newsFactory,
+        \Neklo\News\Model\CategoryFactory $catFactory
     ) {
         $this->newsFactory = $newsFactory;
         $this->catFactory = $catFactory;

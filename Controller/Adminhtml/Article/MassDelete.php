@@ -4,14 +4,14 @@ namespace Neklo\News\Controller\Adminhtml\Article;
 
 use Magento\Backend\App\Action;
 
-class MassDelete extends \Neklo\News\Controller\Adminhtml\MassectionAction\AbstractMassDeleteItems
+class MassDelete extends \Neklo\News\Controller\Adminhtml\MassAction\Delete
 {
 
     private $collectionFactory;
 
     public function __construct(
         Action\Context $context,
-        \Neklo\News\Model\ResourceNews\News\CollectionFactory $collectionFactory
+        \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory
     ) {
         parent::__construct($context);
         $this->collectionFactory = $collectionFactory;

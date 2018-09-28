@@ -24,7 +24,7 @@ class AddLinkInMenu implements ObserverInterface
             $menu = $observer->getMenu();
             $tree = $menu->getTree();
             $data = [
-                'name' => __($this->config->getNameUrlInNavigation()),
+                'name' => __($this->config->getNameNavigationUrl()),
                 'id' => 'some-unique-id-here',
                 'url' => 'block'
             ];

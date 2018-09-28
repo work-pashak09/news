@@ -7,21 +7,22 @@ use Magento\Framework\App\Action\Context;
 class Index extends \Magento\Framework\App\Action\Action
 {
     private $resultPageFactory;
-    private $modelFactory;
+    /** @var $collection    */
+    private $collection;
+    /** @var $modelFactory    */
     private $registry;
+    /** @var $config    */
     private $config;
-
-    private $var_dump;
 
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Neklo\News\Model\NewsFactory $modelFactory,
+        \Neklo\News\Model\ResourceModel\Article\Collection $collection,
         \Magento\Framework\Registry $registry,
         \Neklo\News\Helper\Config $config
     ) {
         $this->resultPageFactory = $resultPageFactory;
-        $this->modelFactory = $modelFactory;
+        $this->collection = $collection;
         $this->registry = $registry;
         $this->config = $config;
         parent::__construct($context);
@@ -29,29 +30,17 @@ class Index extends \Magento\Framework\App\Action\Action
 
     public function execute()
     {
-
-
-
         $idPost = $this->_request->getParam('id', null);
         if (!$this->registry->registry('article') && !$idPost) {
             return $this->_redirect('*/index');
         } else {
             if ($idPost) {
-                $model = $this->modelFactory->create()
-                    ->getCollection();
-                $model->getSelect()
-                    ->joinLeft([
-                        'second' => 'neklo_news_category'
-                        ],
-                        'main_table.category_id = second.id'
-                    );
-                $news = $model->addFieldToFilter('main_table.id', $idPost);
-
-                if (!$news->getId()) {
+                $article = $this->collection->get($idPost);
+                if (!$article->getId()) {
                     return $this->_redirect('*/index');
                 }
-                $this->registry->register('partUrl', $this->config->getUrlNews());
-                $this->registry->register('article', $news[0]);
+
+                $this->registry->register('article', $article->getFirstItem());
             }
         }
         $resultPage = $this->resultPageFactory->create();

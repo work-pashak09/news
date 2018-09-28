@@ -6,55 +6,67 @@ class Save extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Neklo_News::save';
 
-    private $newsFactory;
+    /** @var \Neklo\News\Model\ArticleFactory  */
+    private $articleFactory;
+    /** @var \Neklo\News\Model\CategoryFactory  */
     private $categoryFactory;
+    /** @var \Neklo\News\Model\ResourceModel\Article\CollectionFactory  */
     private $collectionFactory;
+    /** @var \Magento\Framework\AuthorizationInterface  */
     private $authorization;
-    private $rewrite;
-    private $finder;
+    /** @var \Magento\Framework\Registry  */
     private $registry;
+    /** @var Validate  */
     private $validate;
+    /** @var \Neklo\News\Helper\Config  */
     private $config;
+    /** @var \Magento\UrlRewrite\Model\UrlPersistInterface  */
     private $persist;
 
+    /**
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param\ Neklo\News\Model\ArticleFactory $articleFactory
+     * @param \Neklo\News\Model\CategoryFactory $categoryFactory
+     * @param \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory
+     * @param \Magento\Framework\AuthorizationInterface $authorization
+     * @param \Magento\UrlRewrite\Model\UrlRewrite $rewrite
+     * @param \Magento\UrlRewrite\Model\UrlFinderInterface $finder
+     * @param \Magento\Framework\Registry $registry
+     * @param \Neklo\News\Helper\Config $config
+     * @param \Magento\UrlRewrite\Model\UrlPersistInterface $persist
+     * @param Validate $validate
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Neklo\News\Model\NewsFactory $newsFactory,
-        \Neklo\News\Model\CategoriesFactory $categoryFactory,
-        \Neklo\News\Model\ResourceNews\News\CollectionFactory $collectionFactory,
+        \Neklo\News\Model\ArticleFactory $articleFactory,
+        \Neklo\News\Model\CategoryFactory $categoryFactory,
+        \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory,
         \Magento\Framework\AuthorizationInterface $authorization,
-        \Magento\UrlRewrite\Model\UrlRewrite $rewrite,
-        \Magento\UrlRewrite\Model\UrlFinderInterface $finder,
         \Magento\Framework\Registry $registry,
         \Neklo\News\Helper\Config $config,
         \Magento\UrlRewrite\Model\UrlPersistInterface $persist,
         \Neklo\News\Controller\Adminhtml\Article\Validate $validate
     ) {
-        $this->newsFactory = $newsFactory;
+        $this->articleFactory = $articleFactory;
         $this->categoryFactory = $categoryFactory;
         $this->collectionFactory = $collectionFactory;
-        parent::__construct($context);
         $this->authorization = $authorization;
-        $this->rewrite = $rewrite;
-        $this->finder = $finder;
         $this->registry = $registry;
         $this->validate = $validate;
         $this->config = $config;
         $this->persist = $persist;
+        parent::__construct($context);
     }
 
     public function execute()
     {
         $post = $this->_request->getParams();
-
-        $error = $this->validate->cheakError($post);
+        $error = $this->validate->cheakPostData($post);
         if ($error) {
             $this->messageManager->addError(__($error[0]));
             return $this->_redirect("news/article/edit/id/{$post['id']}");
         }
-
-        $model = $this->newsFactory->create()->load($post['id']);
-
+        $model = $this->articleFactory->create()->load($post['id']);
         if (!$model->getId()) {
             $this->messageManager->addError(__('id not find'));
             return $this->_redirect("news/article/edit/id/{$model->getId()}");
@@ -71,26 +83,18 @@ class Save extends \Magento\Backend\App\Action
                 return $this->_redirect("news/article/edit/id/{$post['id']}");
             }
             if ($post['rewrite_url']) {
-                $partUrlNews = $this->config->getUrlNews();
-                $pref = $this->config->getPrifixUrl();
-                $this->rewrite
-                    ->setStoreId(1)
-                    ->setEntityType('Neklo_news')
-                    ->setEntityId($model->getData('id'))
-                    //current url
-                    ->setRequestPath("$partUrlNews/{$category->getData('category')}/{$model->getData('url_key')}$pref")
-                    //redirect
-                    ->setTargetPath("$partUrlNews/{$category->getData('category')}/{$post['url_key']}$pref")
-                    ->setRedirectType(301)
-                    ->setMetadata(['category_id' => $model->getData('category')])
-                    ->save();
+                $this->articleFactory->rewriteUrlArticle(
+                    $model,$category,
+                    $this->config->getUrlActicleName(),
+                    $post['url_key'],
+                    $this->config->getPrefixUrlActicle()
+                );
                 unset($post['rewrite_url']);
             } else {
                 $this->persist->deleteByData(['entity_id' => $model->getData('id')]);
             }
         }
-        $model = $this->newsFactory->create();
-
+        $model = $this->articleFactory->create();
         $model->setData($post);
         $model->save();
         $this->messageManager->addSuccess(__('Your values has beeen submitted successfully.'));
