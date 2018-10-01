@@ -4,7 +4,8 @@ namespace Neklo\News\Controller\Adminhtml\Article;
 
 class Edit extends \Magento\Backend\App\Action
 {
-    private $resultPageFactory = false;
+    /** @var \Magento\Framework\View\Result\PageFactory  */
+    private $resultPageFactory;
 
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -14,6 +15,9 @@ class Edit extends \Magento\Backend\App\Action
         $this->resultPageFactory = $resultPageFactory;
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();

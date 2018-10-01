@@ -4,7 +4,7 @@ namespace Neklo\News\Controller\Adminhtml\Article;
 
 class Save extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Neklo_News::save';
+    const ADMIN_RESOURCE = 'Neklo_News::article_save';
 
     /** @var \Neklo\News\Model\ArticleFactory  */
     private $articleFactory;

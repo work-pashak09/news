@@ -30,7 +30,7 @@ class Validate extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $errorMs= $this->cheakPostValues($this->_request->getParams());
+        $errorMs = $this->cheakPostValues($this->_request->getParams());
         if ($errorMs) {
             $this->dataObject->setError(true);
             $this->dataObject->setMessages($errorMs);
@@ -38,6 +38,9 @@ class Validate extends \Magento\Backend\App\Action
         return $this->resultJsonFactory->create()->setData($this->dataObject);
     }
 
+    /*
+     * @return array
+     */
     public function cheakPostValues($data)
     {
         $errorMs = [];

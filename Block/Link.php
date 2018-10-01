@@ -20,7 +20,6 @@ class Link extends \Magento\Framework\View\Element\Html\Link
 
     public function _toHtml()
     {
-
         $typeLink = $this->getData('type_link');
         $config = $this->config->getDataLink($typeLink);
         if ($config['is_active']) {

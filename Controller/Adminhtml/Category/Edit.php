@@ -6,9 +6,9 @@ use Magento\Framework\Registry;
 
 class Edit extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Neklo_News::article';
+    const ADMIN_RESOURCE = 'Neklo_News::category_save';
     /** @var bool|\Magento\Framework\View\Result\PageFactory */
-    private $resultPageFactory = false;
+    private $resultPageFactory;
     /** @var Registry */
     private $registry;
     /** @var \Neklo\News\Model\Category */

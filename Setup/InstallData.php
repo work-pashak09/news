@@ -8,7 +8,9 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 
 class InstallData implements InstallDataInterface
 {
+    /** @var \Neklo\News\Model\ArticleFactory  */
     private $newsFactory;
+    /** @var \Neklo\News\Model\CategoryFactory  */
     private $catFactory;
 
     public function __construct(

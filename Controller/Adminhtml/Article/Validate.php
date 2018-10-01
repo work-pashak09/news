@@ -8,7 +8,7 @@ class Validate extends \Magento\Backend\App\Action
     private $dataObject;
     /** @var \Magento\Framework\Registry */
     private $registry;
-
+    /** @var \Magento\Framework\Controller\Result\JsonFactory  */
     private $resultJsonFactory;
 
     public function __construct(

@@ -9,9 +9,9 @@
                         <resource id="Neklo_News::article_delete" title="Delete Articles" sortOrder="0"/>
                         <resource id="Neklo_News::article_save" title="Save Articles" sortOrder="0"/>
                     </resource>
-                    <resource id="Neklo_News::categories" title="News" sortOrder="0">
-                        <resource id="Neklo_News::categories_delete" title="Delete Categories" sortOrder="0"/>
-                        <resource id="Neklo_News::categories_save" title="Save Categories" sortOrder="0"/>
+                    <resource id="Neklo_News::manage_categories" title="News" sortOrder="0">
+                        <resource id="Neklo_News::category_delete" title="Delete Categories" sortOrder="0"/>
+                        <resource id="Neklo_News::category_save" title="Save Categories" sortOrder="0"/>
                     </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">

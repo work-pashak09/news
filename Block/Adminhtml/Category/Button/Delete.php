@@ -8,6 +8,9 @@ class Delete extends AbstractBase
 {
     const ADMIN_RESOURCE = 'Neklo_News::delete';
 
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
 

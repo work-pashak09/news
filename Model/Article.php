@@ -54,6 +54,9 @@ class Article extends AbstractModel implements IdentityInterface
         return $this->load($id, 'id');
     }
 
+    /*
+    * @return void
+    */
     public function rewriteUrlArticle($model, $category, $urlAcricle, $urlKey, $prefix)
     {
         $this->rewrite

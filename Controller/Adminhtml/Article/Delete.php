@@ -7,7 +7,7 @@ use Neklo\News\Model\Article as ModelData;
 
 class Delete extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Neklo_News::delete';
+    const ADMIN_RESOURCE = 'Neklo_News::article_delete';
     /** @var ModelData */
     private $newsModel;
 

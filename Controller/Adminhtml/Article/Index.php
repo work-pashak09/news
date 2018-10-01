@@ -5,7 +5,8 @@ namespace Neklo\News\Controller\Adminhtml\Article;
 class Index extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Neklo_News::article';
-    private $resultPageFactory = false;
+    /** @var \Magento\Framework\View\Result\PageFactory  */
+    private $resultPageFactory;
 
     public function __construct(
         \Magento\Backend\App\Action\Context $context,

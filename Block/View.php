@@ -28,12 +28,15 @@ class View extends \Magento\Framework\View\Element\Template
         $this->registry = $registry;
         $this->categoriesModel = $categoriesModel;
     }
-
+    /** \Neklo\News\Model\CategoryFactory */
     public function getOneNews()
     {
         return $this->registry->registry('article');
     }
 
+    /**
+     * @return string
+     */
     public function generalUrl()
     {
         return $this->escapeUrl("/{$this->registry->registry('partUrl')}/{$this->getOneNews()->getData('nnc_category')}");

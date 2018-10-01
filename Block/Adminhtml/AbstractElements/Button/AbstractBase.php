@@ -8,6 +8,7 @@ use Neklo\News\Block\Adminhtml\Article\Button\Generic;
 abstract class AbstractBase extends Generic implements ButtonProviderInterface
 {
     const ADMIN_RESOURCE ='';
+    /** @var \Magento\Framework\AuthorizationInterface  */
     private $authorization;
 
     public function __construct(
@@ -19,6 +20,9 @@ abstract class AbstractBase extends Generic implements ButtonProviderInterface
         $this->authorization = $authorization;
     }
 
+    /**
+     * @return bool
+     */
     public function isAllowed()
     {
         return $this->authorization->isAllowed(static::ADMIN_RESOURCE);

@@ -8,7 +8,6 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 
 class UpgradeSchema implements UpgradeSchemaInterface
 {
-
     public function upgrade( SchemaSetupInterface $setup, ModuleContextInterface $context )
     {
         $setup->startSetup();

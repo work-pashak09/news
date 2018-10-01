@@ -4,6 +4,7 @@ namespace Neklo\News\Block\Adminhtml\AbstractElements\Massaction;
 
 abstract class AbstractMassection extends \Magento\Ui\Component\MassAction
 {
+    /** @var \Magento\Framework\AuthorizationInterface  */
     private $authorization;
     const ADMIN_RESOURCE = '';
 

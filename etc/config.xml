@@ -18,7 +18,7 @@
                 </links_control_navigation>
                 <settings_article_page>
                     <default_link_article>news</default_link_article>
-                    <pref_url>.xml</pref_url>
+                    <prefix_url>.xml</prefix_url>
                     <is_enabled>1</is_enabled>
                     <name_table_all_news>List block news</name_table_all_news>
                 </settings_article_page>

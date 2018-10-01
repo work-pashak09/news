@@ -7,7 +7,9 @@ use Magento\Framework\Event\ObserverInterface;
 
 class AddLinkInMenu implements ObserverInterface
 {
+    /** @var \Neklo\News\Helper\Config  */
     private $config;
+    /** @var \Magento\Framework\Data\Tree\NodeFactory  */
     private $observer;
 
     public function __construct(

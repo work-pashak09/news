@@ -7,10 +7,11 @@ use Magento\Framework\Controller\ResultFactory;
 
 class View extends \Magento\Framework\App\Action\Action
 {
+    /** @var \Magento\Framework\View\Result\PageFactory  */
     private $resultPageFactory;
-
+    /** @var \Neklo\News\Model\CategoryFactory  */
     private $model;
-
+    /** @var \Magento\Framework\Registry  */
     private $registry;
 
     public function __construct(
@@ -39,6 +40,9 @@ class View extends \Magento\Framework\App\Action\Action
         return $this->resultPageFactory->create();
     }
 
+    /**
+     * @return string
+     */
     public function getPartUrl()
     {
         return $this->registry->registry('partUrl');

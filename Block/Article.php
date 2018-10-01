@@ -10,12 +10,10 @@ class Article extends \Magento\Framework\View\Element\Template
      * @var \Neklo\News\Model\ResourceModel\Article\CollectionFactory
      */
     private $collectionFactory;
-
     /**
      * @var \Neklo\News\Helper\Config
      */
     private $config;
-
     /**
      * @param Template\Context $context
      * @param \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory
@@ -32,7 +30,6 @@ class Article extends \Magento\Framework\View\Element\Template
         $this->collectionFactory = $collectionFactory;
         $this->config = $config;
     }
-
     /**
      * @return \Neklo\News\Model\ResourceModel\Article\Collection
      */
@@ -41,21 +38,22 @@ class Article extends \Magento\Framework\View\Element\Template
         return $this->collectionFactory->create()->getCollectionArticle();
     }
 
+    /** @return  string */
     public function getNameTable()
     {
         return $this->config->getNameTable();
     }
-
+    /** @return  string */
     public function getPrefixUrl()
     {
         return $this->config->getPrefixUrlActicle();
     }
-
+    /** @return  string */
     public function getUrlActicleName()
     {
         return $this->config->getNameUrlLinkArticle();
     }
-
+    /** @return  string */
     public function getUrlArticle($category, $urlKey)
     {
         return $this->escapeUrl("/{$this->getUrlActicleName()}/$category/$urlKey{$this->getPrefixUrl()}");

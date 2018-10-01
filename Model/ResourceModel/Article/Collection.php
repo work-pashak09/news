@@ -12,6 +12,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         $this->_init(DataModel::class, ResourseModel::class);
     }
 
+    /**
+     * @return Collection
+     */
     public function getDataArticle($urlArticle, $nameCategory)
     {
         return $this->join([
@@ -25,6 +28,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             ->getFirstItem();
     }
 
+    /**
+     * @return Collection
+     */
     public function getArticleById($id)
     {
         return $this->join(
@@ -35,6 +41,10 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         )->addFieldToFilter('main_table.id', $id);
     }
 
+    /**
+     * @return Collection
+     */
+
     public function getCollectionArticle()
     {
         return $this->join(
@@ -43,8 +53,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             ],
             'main_table.category_id = nnc.id',
             [
-                'nnc_is_activ' => 'nnc.is_active',
-                'nnc_name_getegory' => 'nnc.category',
+                'is_active' => 'nnc.is_active',
+                'category_name' => 'nnc.category',
             ]
         );
     }

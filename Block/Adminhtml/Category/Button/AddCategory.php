@@ -8,6 +8,9 @@ class AddCategory extends AbstractBase
 {
     const ADMIN_RESOURCE = 'Neklo_News::save';
 
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
         $data = [];

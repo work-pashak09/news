@@ -14,24 +14,23 @@ class ParserUrl
 
     public function parse()
     {
-       $partUrl = explode('/', trim($this->request->getPathInfo(), '/'));
-        $arr =[];
+        $partUrl = explode('/', trim($this->request->getPathInfo(), '/'));
+        $infoPatch = [];
         switch (count($partUrl)) {
             case 1:
-                    $arr = ['linkList' => $partUrl[0]];
-                    break;
+                $infoPatch = ['linkList' => $partUrl[0]];
+                break;
             case 2:
-                $arr = ['linkList' => $partUrl[0], 'nameCategory' => $partUrl[1]];
+                $infoPatch = ['linkList' => $partUrl[0], 'nameCategory' => $partUrl[1]];
                 break;
             case 3:
-                $arr = [
+                $infoPatch = [
                     'linkList' => $partUrl[0],
                     'urlArticle' => $partUrl[2],
                     'nameCategory' => $partUrl[1]
                 ];
                 break;
-
         }
-        return $arr;
+        return $infoPatch;
     }
 }

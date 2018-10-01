@@ -4,7 +4,7 @@ namespace Neklo\News\Controller\Adminhtml\MassAction;
 
 abstract class Delete extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Neklo_News::delete';
+    const ADMIN_RESOURCE = 'Neklo_News::article_delete';
 
     public function execute()
     {

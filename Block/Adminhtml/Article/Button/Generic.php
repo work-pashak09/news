@@ -5,15 +5,11 @@ namespace Neklo\News\Block\Adminhtml\Article\Button;
 class Generic
 {
     /**
-     * Url Builder
-     *
      * @var \Magento\Framework\UrlInterface
      */
     private $urlBuilder;
 
     /**
-     * Registry
-     *
      * @var \Magento\Framework\Registry
      */
     private $registry;

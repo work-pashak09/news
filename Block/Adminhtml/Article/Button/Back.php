@@ -6,7 +6,9 @@ use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBase;
 
 class Back extends AbstractBase
 {
-
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
 

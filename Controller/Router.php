@@ -77,7 +77,7 @@ class Router implements \Magento\Framework\App\RouterInterface
                     if ($category->getId() && $category->getData('is_active')) {
                         $urlRequest = "$nameUrlArticleConfig/{$partUrl['nameCategory']}";
                     } else {
-                        $urlRequest = "$nameUrlArticleConfig";
+                        $urlRequest = $nameUrlArticleConfig;
                     }
                     return $this->redirect(
                         $request,
@@ -96,9 +96,10 @@ class Router implements \Magento\Framework\App\RouterInterface
                         "{$partUrl['nameCategory']} category is not available"
                     );
                 } elseif (!$news->getData('main_is_active')) {
+                    $category = $news->getData('nnc_category');
                     $this->redirect(
                         $request,
-                        "$nameUrlArticleConfig/{$news->getData('nnc_category')}",
+                        "$nameUrlArticleConfig/$category",
                         "acticle is not available"
                     );
                 }
