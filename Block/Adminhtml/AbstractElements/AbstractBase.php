@@ -1,6 +1,6 @@
 <?php
 
-namespace Neklo\News\Block\Adminhtml\AbstractElements\Button;
+namespace Neklo\News\Block\Adminhtml\AbstractElements;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Neklo\News\Block\Adminhtml\Article\Button\Generic;

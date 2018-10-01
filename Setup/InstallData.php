@@ -21,6 +21,11 @@ class InstallData implements InstallDataInterface
         $this->catFactory = $catFactory;
     }
 
+    /**
+     * @param ModuleDataSetupInterface $setup
+     * @param ModuleContextInterface $context
+     * @throws \Exception
+     */
     public function install(
         ModuleDataSetupInterface $setup,
         ModuleContextInterface $context

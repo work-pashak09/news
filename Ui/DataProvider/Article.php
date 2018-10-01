@@ -4,6 +4,7 @@ namespace Neklo\News\Ui\DataProvider;
 
 class Article extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    /** @var array */
     private $loadedData;
 
     /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Neklo\News\Block\Adminhtml\AbstractElements\Massaction;
+namespace Neklo\News\Block\Adminhtml\AbstractElements;
 
-abstract class AbstractMassection extends \Magento\Ui\Component\MassAction
+abstract class Massection extends \Magento\Ui\Component\MassAction
 {
     /** @var \Magento\Framework\AuthorizationInterface  */
     private $authorization;

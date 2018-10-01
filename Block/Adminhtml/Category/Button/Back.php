@@ -2,7 +2,7 @@
 
 namespace Neklo\News\Block\Adminhtml\Category\Button;
 
-use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBase;
+use Neklo\News\Block\Adminhtml\AbstractElements\AbstractBase;
 
 class Back extends AbstractBase
 {

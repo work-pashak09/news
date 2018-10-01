@@ -18,6 +18,9 @@ class Link extends \Magento\Framework\View\Element\Html\Link
         parent::__construct($context, $data);
     }
 
+    /**
+     * @return string
+     */
     public function _toHtml()
     {
         $typeLink = $this->getData('type_link');

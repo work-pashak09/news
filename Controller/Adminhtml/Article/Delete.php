@@ -23,6 +23,9 @@ class Delete extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     */
     public function execute()
     {
         try {

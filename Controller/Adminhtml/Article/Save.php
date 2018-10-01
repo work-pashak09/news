@@ -58,6 +58,10 @@ class Save extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @throws \Exception
+     */
     public function execute()
     {
         $post = $this->_request->getParams();

@@ -9,9 +9,7 @@ use Magento\Framework\UrlInterface;
 
 class Edit extends Column
 {
-    /**
-     * @var UrlInterface
-     */
+   /** @var UrlInterface  */
     private $urlBuilder;
 
     /**

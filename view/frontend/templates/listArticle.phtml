@@ -15,7 +15,7 @@
             <td><?=  $block->escapeHtml($item->getTitle()) ?></td>
             <td><?=  $block->escapeHtml($item->getContent()) ?></td>
             <td><?=  $block->escapeHtml($item->getData('is_active')) ?></td>
-            <td><a target="_blank" href="<?= $block->getUrlArticle($item->getData('nnc_name_getegory'), $item->getData('url_key')) ?>">look</td>
+            <td><a target="_blank" href="<?= $block->getUrlArticle($item->getData('category_name'), $item->getData('url_key')) ?>">look</td>
         </tr>
     <?php endforeach; ?>
     </tbody>

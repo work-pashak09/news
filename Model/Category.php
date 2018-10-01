@@ -9,7 +9,6 @@ use Neklo\News\Model\ResourceModel\Category as SnippetResource;
 class Category extends AbstractModel implements IdentityInterface
 {
     const CACHE_TAG = 'category_data';
-
     /**
      * @return void
      */

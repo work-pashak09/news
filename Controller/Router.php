@@ -4,14 +4,23 @@ namespace Neklo\News\Controller;
 
 class Router implements \Magento\Framework\App\RouterInterface
 {
+    /** @var \Magento\Framework\App\ActionFactory  */
     private $actionFactory;
+    /** @var \Neklo\News\Helper\Config  */
     private $config;
+    /** @var \Magento\Framework\App\ResponseInterface  */
     private $response;
-    private $categoryegoriesFactory;
+    /** @var  \Neklo\News\Model\CategoryFactory*/
+    private $categoriesFactory;
+    /** @var \Neklo\News\Model\ArticleFactory  */
     private $news;
+    /** @var \Magento\Framework\Registry  */
     private $registry;
+    /** @var \Magento\Framework\App\Action\RedirectFactory  */
     private $redirect;
+    /** @var \Neklo\News\Helper\ParserUrl  */
     private $parserUrl;
+    /** @var \Neklo\News\Model\ResourceModel\Article\Collection  */
     private $newsCollection;
 
     public function __construct(
@@ -38,6 +47,10 @@ class Router implements \Magento\Framework\App\RouterInterface
         $this->newsCollection = $newsCollection;
     }
 
+    /**
+     * @param \Magento\Framework\App\RequestInterface $request
+     * @return \Magento\Framework\App\ActionInterface|null
+     */
     public function match(\Magento\Framework\App\RequestInterface $request)
     {
         $partUrl = $this->parserUrl->parse();
@@ -112,6 +125,9 @@ class Router implements \Magento\Framework\App\RouterInterface
         return $this->actionFactory->create(\Magento\Framework\App\Action\Forward::class);
     }
 
+    /*
+     * @return \Magento\Framework\App\ActionInterface
+     */
     public function redirect($request, $url, $message)
     {
         $this->messageManager->addErrorMessage($message);

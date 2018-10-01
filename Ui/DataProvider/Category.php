@@ -4,6 +4,7 @@ namespace Neklo\News\Ui\DataProvider;
 
 class Category extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    /** @var  array*/
     private $loadedData;
 
     /**
@@ -27,8 +28,6 @@ class Category extends \Magento\Ui\DataProvider\AbstractDataProvider
     }
 
     /**
-     * Get data
-     *
      * @return array
      */
     public function getData()
@@ -43,6 +42,9 @@ class Category extends \Magento\Ui\DataProvider\AbstractDataProvider
         return $this->loadedData;
     }
 
+    /**
+     * @return \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection|\Neklo\News\Model\ResourceModel\Category\Collection
+     */
     public function getCollection()
     {
         return $this->collection;

@@ -20,6 +20,10 @@ class AddLinkInMenu implements ObserverInterface
         $this->observer = $node;
     }
 
+    /**
+     * @param EventObserver $observer
+     * @return $this|void
+     */
     public function execute(EventObserver $observer)
     {
         if ($this->config->isShowUrlInNavigation()) {

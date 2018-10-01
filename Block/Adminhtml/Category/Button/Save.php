@@ -2,11 +2,11 @@
 
 namespace Neklo\News\Block\Adminhtml\Category\Button;
 
-use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBase;
+use Neklo\News\Block\Adminhtml\AbstractElements\AbstractBase;
 
 class Save extends AbstractBase
 {
-    const ADMIN_RESOURCE = 'Neklo_News::save';
+    const ADMIN_RESOURCE = 'Neklo_News::category_save';
 
     /**
      * @return array

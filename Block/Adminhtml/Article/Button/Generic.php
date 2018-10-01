@@ -14,9 +14,7 @@ class Generic
      */
     private $registry;
 
-    /**
-     * Constructor
-     *
+    /*
      * @param \Magento\Backend\Block\Widget\Context $context
      * @param \Magento\Framework\Registry $registry
      */
@@ -45,6 +43,9 @@ class Generic
         return $this->urlBuilder->getUrl($route, $params);
     }
 
+    /**
+     * @return \Magento\Framework\Registry
+     */
     public function getRegistry()
     {
         return $this->registry;

@@ -2,12 +2,11 @@
 
 namespace Neklo\News\Block\Adminhtml\Article\Button;
 
-use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBase;
+use Neklo\News\Block\Adminhtml\AbstractElements\AbstractBase;
 
-class AddNews extends AbstractBase
+class AddArticle extends AbstractBase
 {
-    const ADMIN_RESOURCE = 'Neklo_News::save';
-
+    const ADMIN_RESOURCE = 'Neklo_News::article_save';
     /**
      * @return array
      */
@@ -16,7 +15,7 @@ class AddNews extends AbstractBase
         $data = [];
         if ($this->isAllowed()) {
                 $data = [
-                    'label' => __('Add News'),
+                    'label' => __('Add article'),
                     'class' => 'save primary',
                     'data_attribute' => [
                         'mage-init' => ['button' => ['event' => 'save']],

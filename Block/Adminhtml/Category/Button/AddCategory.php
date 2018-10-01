@@ -2,11 +2,11 @@
 
 namespace Neklo\News\Block\Adminhtml\Category\Button;
 
-use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBase;
+use Neklo\News\Block\Adminhtml\AbstractElements\AbstractBase;
 
 class AddCategory extends AbstractBase
 {
-    const ADMIN_RESOURCE = 'Neklo_News::save';
+    const ADMIN_RESOURCE = 'Neklo_News::category_save';
 
     /**
      * @return array
@@ -26,7 +26,6 @@ class AddCategory extends AbstractBase
                 'sort_order' => 90,
             ];
         }
-
         return $data;
     }
 }

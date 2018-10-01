@@ -2,11 +2,11 @@
 
 namespace Neklo\News\Block\Adminhtml\Category\Button;
 
-use Neklo\News\Block\Adminhtml\AbstractElements\Button\AbstractBase;
+use Neklo\News\Block\Adminhtml\AbstractElements\AbstractBase;
 
 class Delete extends AbstractBase
 {
-    const ADMIN_RESOURCE = 'Neklo_News::delete';
+    const ADMIN_RESOURCE = 'Neklo_News::category_delete';
 
     /**
      * @return array

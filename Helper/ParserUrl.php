@@ -4,6 +4,7 @@ namespace Neklo\News\Helper;
 
 class ParserUrl
 {
+    /** @var \Magento\Framework\App\RequestInterface  */
     private $request;
 
     public function __construct(
@@ -12,6 +13,9 @@ class ParserUrl
         $this->request = $request;
     }
 
+    /**
+     * @return array
+     */
     public function parse()
     {
         $partUrl = explode('/', trim($this->request->getPathInfo(), '/'));

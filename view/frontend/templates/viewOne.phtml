@@ -1,6 +1,6 @@
 <?php
 /** @var \Neklo\News\Block\View $block */
-$data =  $block->escapeHtml($block->getOneNews());?>
+$data =  $block->getOneNews();?>
 <p><?= $block->escapeHtml($data->getTitle()) ?></p>
 <p><?=  $block->escapeHtml($data->getContent()) ?></p>
 <a href="<?=$block->generalUrl()?>">go to in selection <?= $block->escapeHtml($data->getData('nnc_category'))?></a>
