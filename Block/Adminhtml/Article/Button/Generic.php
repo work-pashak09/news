@@ -14,7 +14,7 @@ class Generic
      */
     private $registry;
 
-    /*
+    /**
      * @param \Magento\Backend\Block\Widget\Context $context
      * @param \Magento\Framework\Registry $registry
      */
@@ -30,9 +30,8 @@ class Generic
      * Return the synonyms group Id.
      *
      * @return int|null
+     *
 
-    /**
-     * Generate url by route and parameters
      *
      * @param   string $route
      * @param   array $params

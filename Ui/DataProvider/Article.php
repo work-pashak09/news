@@ -28,7 +28,6 @@ class Article extends \Magento\Ui\DataProvider\AbstractDataProvider
     }
 
     /**
-     * Get data
      *
      * @return array
      */

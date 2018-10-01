@@ -7,7 +7,7 @@
         </item>
         <item name="spinner" xsi:type="string">neklo_news_category_columns</item>
         <item name="buttons" xsi:type="array">
-            <item name="add_category" xsi:type="string">Neklo\News\Block\Adminhtml\Category\Button\AddCategory</item>
+            <item name="add_category" xsi:type="string">Neklo\News\Block\Adminhtml\Category\Button\Add</item>
         </item>
     </argument>
     <dataSource name="neklo_news_category_list_data_source">

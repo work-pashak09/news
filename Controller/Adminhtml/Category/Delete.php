@@ -10,6 +10,12 @@ class Delete extends \Magento\Backend\App\Action
     const ADMIN_RESOURCE = 'Neklo_News::category_delete';
     /** @var ModelData  */
     private $newsModel;
+
+    /**
+     * Delete constructor.
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param ModelData $newsModel
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         ModelData $newsModel
@@ -18,6 +24,9 @@ class Delete extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     */
     public function execute()
     {
         try {

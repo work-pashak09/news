@@ -9,9 +9,7 @@ use Magento\Framework\UrlInterface;
 
 class Edit extends Column
 {
-    /**
-     * @var UrlInterface
-     */
+    /** @var UrlInterface*/
     private $urlBuilder;
 
     /**
@@ -33,8 +31,6 @@ class Edit extends Column
     }
 
     /**
-     * Prepare Data Source
-     *
      * @param array $dataSource
      * @return array
      */

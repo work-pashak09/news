@@ -14,6 +14,12 @@ class View extends \Magento\Framework\App\Action\Action
     /** @var \Magento\Framework\Registry  */
     private $registry;
 
+    /**
+     * @param Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Magento\Framework\Registry $registry
+     * @param \Neklo\News\Model\CategoryFactory $model
+     */
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,

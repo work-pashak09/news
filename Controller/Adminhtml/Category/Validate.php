@@ -11,6 +11,14 @@ class Validate extends \Magento\Backend\App\Action
     /** @var \Neklo\News\Model\CategoryFactory */
     private $modelFactory;
 
+    /**
+     * Validate constructor.
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
+     * @param \Magento\Framework\View\LayoutFactory $layoutFactory
+     * @param \Magento\Framework\DataObject $dataObject
+     * @param \Neklo\News\Model\CategoryFactory $modelFactory
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,

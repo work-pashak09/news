@@ -7,6 +7,10 @@ class ParserUrl
     /** @var \Magento\Framework\App\RequestInterface  */
     private $request;
 
+    /**
+     * ParserUrl constructor.
+     * @param \Magento\Framework\App\RequestInterface $request
+     */
     public function __construct(
         \Magento\Framework\App\RequestInterface $request
     ) {

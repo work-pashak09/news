@@ -11,6 +11,11 @@ class Index extends \Magento\Framework\App\Action\Action
     /** @var \Neklo\News\Helper\Config  */
     private $helper;
 
+    /**
+     * @param Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Neklo\News\Helper\Config $config
+     */
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
@@ -21,6 +26,9 @@ class Index extends \Magento\Framework\App\Action\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();

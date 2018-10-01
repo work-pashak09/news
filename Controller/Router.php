@@ -23,6 +23,18 @@ class Router implements \Magento\Framework\App\RouterInterface
     /** @var \Neklo\News\Model\ResourceModel\Article\Collection  */
     private $newsCollection;
 
+    /**
+     * @param \Magento\Framework\App\ActionFactory $actionFactory
+     * @param \Magento\Framework\App\ResponseInterface $response
+     * @param \Neklo\News\Helper\Config $config
+     * @param \Neklo\News\Model\CategoryFactory $categoryegoriesFactory
+     * @param \Neklo\News\Model\ArticleFactory $news
+     * @param \Neklo\News\Model\ResourceModel\Article\Collection $newsCollection
+     * @param \Magento\Framework\Message\ManagerInterface $messageManager
+     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Framework\App\Action\RedirectFactory $redirect
+     * @param \Neklo\News\Helper\ParserUrl $parserUrl
+     */
     public function __construct(
         \Magento\Framework\App\ActionFactory $actionFactory,
         \Magento\Framework\App\ResponseInterface $response,

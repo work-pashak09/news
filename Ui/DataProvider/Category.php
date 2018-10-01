@@ -6,7 +6,6 @@ class Category extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
     /** @var  array*/
     private $loadedData;
-
     /**
      * @param string $name
      * @param string $primaryFieldName

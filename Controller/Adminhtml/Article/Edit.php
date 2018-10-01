@@ -12,6 +12,12 @@ class Edit extends \Magento\Backend\App\Action
     /** @var \Neklo\News\Model\ArticleFactory */
     private $articleFactory;
 
+    /**
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Neklo\News\Model\ArticleFactory $articleFactory
+     * @param \Magento\Framework\Registry $registry
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,

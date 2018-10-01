@@ -6,6 +6,7 @@ use Magento\Framework\App\Action\Context;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
+    /** @var \Magento\Framework\View\Result\PageFactory  */
     private $resultPageFactory;
     /** @var $collection    */
     private $collection;
@@ -14,6 +15,13 @@ class Index extends \Magento\Framework\App\Action\Action
     /** @var $config    */
     private $config;
 
+    /**
+     * @param Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Neklo\News\Model\ResourceModel\Article\Collection $collection
+     * @param \Magento\Framework\Registry $registry
+     * @param \Neklo\News\Helper\Config $config
+     */
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
@@ -28,6 +36,9 @@ class Index extends \Magento\Framework\App\Action\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $idPost = $this->_request->getParam('id', null);

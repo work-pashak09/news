@@ -2,9 +2,9 @@
 
 namespace Neklo\News\Block\Adminhtml\Article\Button;
 
-use Neklo\News\Block\Adminhtml\AbstractElements\AbstractBase;
+use Neklo\News\Block\Adminhtml\AbstractElements\Button;
 
-class AddArticle extends AbstractBase
+class Add extends Button
 {
     const ADMIN_RESOURCE = 'Neklo_News::article_save';
     /**
@@ -25,7 +25,6 @@ class AddArticle extends AbstractBase
                     'sort_order' => 90,
                 ];
         }
-
             return $data;
     }
 }

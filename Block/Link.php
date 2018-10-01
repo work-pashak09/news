@@ -9,6 +9,11 @@ class Link extends \Magento\Framework\View\Element\Html\Link
     /** @var \Magento\Framework\App\Config\ScopeConfigInterface */
     private $config;
 
+    /**
+     * @param \Neklo\News\Helper\Config $config
+     * @param Template\Context $context
+     * @param array $data
+     */
     public function __construct(
         \Neklo\News\Helper\Config $config,
         Template\Context $context,

@@ -73,7 +73,6 @@ class Collection extends ResourceCollection implements SearchResultInterface
     }
 
     /**
-     * Set total count.
      *
      * @param int $totalCount
      * @return $this
@@ -85,7 +84,6 @@ class Collection extends ResourceCollection implements SearchResultInterface
     }
 
     /**
-     * Set items list.
      *
      * @param \Magento\Framework\Api\ExtensibleDataInterface[] $items
      * @return $this

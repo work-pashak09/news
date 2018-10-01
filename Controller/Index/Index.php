@@ -11,6 +11,12 @@ class Index extends \Magento\Framework\App\Action\Action
     /** @var \Neklo\News\Helper\Config  */
     private $helper;
 
+    /**
+     * Index constructor.
+     * @param Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Neklo\News\Helper\Config $config
+     */
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,

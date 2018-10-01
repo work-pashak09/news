@@ -14,6 +14,15 @@ class View extends \Magento\Framework\View\Element\Template
     /** @var \Magento\Framework\Registry */
     private $registry;
 
+    /**
+     * View constructor.
+     * @param Template\Context $context
+     * @param \Neklo\News\Model\Article $Model
+     * @param \Neklo\News\Model\Article $categoriesModel
+     * @param \Magento\Framework\Controller\ResultFactory $result
+     * @param \Magento\Framework\Registry $registry
+     * @param array $data
+     */
     public function __construct(
         Template\Context $context,
         \Neklo\News\Model\Article $Model,

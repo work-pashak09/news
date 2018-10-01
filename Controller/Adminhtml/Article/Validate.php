@@ -11,6 +11,13 @@ class Validate extends \Magento\Backend\App\Action
     /** @var \Magento\Framework\Controller\Result\JsonFactory  */
     private $resultJsonFactory;
 
+    /**
+     * Validate constructor.
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\DataObject $dataObject
+     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\DataObject $dataObject,
@@ -22,7 +29,7 @@ class Validate extends \Magento\Backend\App\Action
         $this->registry = $registry;
         $this->resultJsonFactory = $resultJsonFactory;
     }
-    /*
+    /**
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function cheakPostData($data)

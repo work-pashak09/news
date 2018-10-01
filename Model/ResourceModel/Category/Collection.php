@@ -7,12 +7,6 @@ use Neklo\News\Model\ResourceModel\Category as ResourseModel;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
-    /**
-     * Define resource model
-     *
-     * @return void
-     */
-
     public function _construct()
     {
         $this->_init(DataModel::class, ResourseModel::class);

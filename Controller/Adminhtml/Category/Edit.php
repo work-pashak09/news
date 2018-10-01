@@ -14,6 +14,12 @@ class Edit extends \Magento\Backend\App\Action
     /** @var \Neklo\News\Model\Category */
     private $model;
 
+    /**
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Neklo\News\Model\Category $model
+     * @param Registry $registry
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
@@ -26,6 +32,9 @@ class Edit extends \Magento\Backend\App\Action
         $this->model = $model;
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $param = $this->getRequest()->getParam('id');

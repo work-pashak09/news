@@ -82,7 +82,7 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
         );
     }
 
-    /*
+    /**
      * @return bool
      */
     private function isFlag($patchToConfig)

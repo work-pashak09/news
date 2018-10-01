@@ -2,9 +2,9 @@
 
 namespace Neklo\News\Block\Adminhtml\Category\Button;
 
-use Neklo\News\Block\Adminhtml\AbstractElements\AbstractBase;
+use Neklo\News\Block\Adminhtml\AbstractElements\Button;
 
-class AddCategory extends AbstractBase
+class Add extends Button
 {
     const ADMIN_RESOURCE = 'Neklo_News::category_save';
 
@@ -16,7 +16,7 @@ class AddCategory extends AbstractBase
         $data = [];
         if ($this->isAllowed()) {
             $data = [
-                'label' => __('Add Categories'),
+                'label' => __('Add Category'),
                 'class' => 'save primary',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save']],

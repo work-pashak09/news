@@ -15,7 +15,14 @@ class Article extends AbstractModel implements IdentityInterface
     const CACHE_TAG = 'article_data';
 
     /**
-     * @return void
+     * @param \Magento\Framework\Model\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\UrlRewrite\Model\UrlRewrite $rewrite
+     * @param \Magento\UrlRewrite\Model\UrlFinderInterface $finder
+     * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
+     * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
+     * @param array $data
+     *
      */
     public function __construct(
         \Magento\Framework\Model\Context $context,
@@ -37,7 +44,6 @@ class Article extends AbstractModel implements IdentityInterface
     }
 
     /**
-     * Return unique ID(s) for each object in system
      *
      * @return array
      */
@@ -56,7 +62,7 @@ class Article extends AbstractModel implements IdentityInterface
         return $this->load($id, 'id');
     }
 
-    /*
+    /**
     * @return void
     */
     public function rewriteUrlArticle($model, $category, $urlAcricle, $urlKey, $prefix)

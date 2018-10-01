@@ -12,9 +12,9 @@ class Delete extends \Magento\Backend\App\Action
     private $newsModel;
 
     /**
-     * @param Action\Context $context
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param ModelData $newsModel
      */
-
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         ModelData $newsModel

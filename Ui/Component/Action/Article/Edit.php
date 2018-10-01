@@ -11,7 +11,6 @@ class Edit extends Column
 {
    /** @var UrlInterface  */
     private $urlBuilder;
-
     /**
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
@@ -31,7 +30,6 @@ class Edit extends Column
     }
 
     /**
-     * Prepare Data Source
      *
      * @param array $dataSource
      * @return array

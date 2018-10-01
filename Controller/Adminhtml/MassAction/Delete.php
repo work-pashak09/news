@@ -2,10 +2,15 @@
 
 namespace Neklo\News\Controller\Adminhtml\MassAction;
 
+use Neklo\News\Model\ResourceModel\Article\Collection;
+
 abstract class Delete extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Neklo_News::article_delete';
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         try {
@@ -26,5 +31,9 @@ abstract class Delete extends \Magento\Backend\App\Action
         $resultRedirect = $this->resultRedirectFactory->create();
         return $resultRedirect->setPath('*/*/index');
     }
+
+    /**
+     * @return Collection
+     */
     abstract public function getCollectionFactory();
 }

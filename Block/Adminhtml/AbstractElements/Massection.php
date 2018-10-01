@@ -8,6 +8,13 @@ abstract class Massection extends \Magento\Ui\Component\MassAction
     private $authorization;
     const ADMIN_RESOURCE = '';
 
+    /**
+     * Massection constructor.
+     * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
+     * @param \Magento\Framework\AuthorizationInterface $authorization
+     * @param $components
+     * @param array $data
+     */
     public function __construct(
         \Magento\Framework\View\Element\UiComponent\ContextInterface $context,
         \Magento\Framework\AuthorizationInterface $authorization,
@@ -18,24 +25,28 @@ abstract class Massection extends \Magento\Ui\Component\MassAction
         parent::__construct($context, $components, $data);
     }
 
+    /**
+     * @return  void
+     */
     public function prepare()
     {
         $config = $this->getConfiguration();
         $original = $config;
-        $isAut = $this->authorization->isAllowed(static::ADMIN_RESOURCE);
-        if (!$isAut) {
+        $isAuth = $this->authorization->isAllowed(static::ADMIN_RESOURCE);
+        if (!$isAuth) {
             $this->setData('config', '');
             return;
         }
         foreach ($this->getChildComponents() as $item) {
             switch ($item->getName()) {
                 case 'delete':
-                    if ($isAut) {
+                    if ($isAuth) {
                         $config['actions'][] = $item->getConfiguration();
                     }
                     break;
+                    /*for example*/
                 case 'run':
-                    if ($isAut) {
+                    if ($isAuth) {
                         $config['actions'][] = $item->getConfiguration();
                     }
                     break;

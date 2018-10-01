@@ -10,6 +10,12 @@ class Save extends \Magento\Backend\App\Action
     /** @var Validate */
     private $validate;
 
+    /**
+     * Save constructor.
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param \Neklo\News\Model\CategoryFactory $categoryFactory
+     * @param Validate $validate
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Neklo\News\Model\CategoryFactory $categoryFactory,
@@ -20,6 +26,9 @@ class Save extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         try {

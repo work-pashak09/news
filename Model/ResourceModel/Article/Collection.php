@@ -44,7 +44,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     /**
      * @return Collection
      */
-
     public function getCollectionArticle()
     {
         return $this->join(

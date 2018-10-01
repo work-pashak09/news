@@ -2,9 +2,9 @@
 
 namespace Neklo\News\Block\Adminhtml\Article\Button;
 
-use Neklo\News\Block\Adminhtml\AbstractElements\AbstractBase;
+use Neklo\News\Block\Adminhtml\AbstractElements\Button;
 
-class Delete extends AbstractBase
+class Delete extends Button
 {
     const ADMIN_RESOURCE = 'Neklo_News::article_delete';
     /**

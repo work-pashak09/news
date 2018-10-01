@@ -13,6 +13,14 @@ class ArticlesCategory extends \Magento\Framework\View\Element\Template
     /** @var \Neklo\News\Helper\Config */
     private $config;
 
+    /**
+     * ArticlesCategory constructor.
+     * @param Template\Context $context
+     * @param \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory
+     * @param \Neklo\News\Helper\Config $config
+     * @param \Magento\Framework\Registry $registry
+     * @param array $data
+     */
     public function __construct(
         Template\Context $context,
         \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory,

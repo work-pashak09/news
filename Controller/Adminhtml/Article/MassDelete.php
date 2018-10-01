@@ -9,6 +9,10 @@ class MassDelete extends \Neklo\News\Controller\Adminhtml\MassAction\Delete
     /** @var \Neklo\News\Model\ResourceModel\Article\CollectionFactory  */
     private $collectionFactory;
 
+    /**
+     * @param Action\Context $context
+     * @param \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory
+     */
     public function __construct(
         Action\Context $context,
         \Neklo\News\Model\ResourceModel\Article\CollectionFactory $collectionFactory

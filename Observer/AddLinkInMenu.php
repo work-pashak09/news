@@ -12,6 +12,10 @@ class AddLinkInMenu implements ObserverInterface
     /** @var \Magento\Framework\Data\Tree\NodeFactory  */
     private $observer;
 
+    /**
+     * @param \Neklo\News\Helper\Config $config
+     * @param \Magento\Framework\Data\Tree\NodeFactory $node
+     */
     public function __construct(
         \Neklo\News\Helper\Config $config,
         \Magento\Framework\Data\Tree\NodeFactory $node

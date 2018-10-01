@@ -6,6 +6,6 @@ use Neklo\News\Block\Adminhtml\AbstractElements\Massection;
 
 class Massaction extends Massection
 {
-    const  ADMIN_RESOURCE = 'Neklo_News::article_save';
+    const ADMIN_RESOURCE = 'Neklo_News::article_save';
 
 }
