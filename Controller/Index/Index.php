@@ -6,9 +6,13 @@ use Magento\Framework\App\Action\Context;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-    /** @var \Magento\Framework\View\Result\PageFactory  */
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     private $resultPageFactory;
-    /** @var \Neklo\News\Helper\Config  */
+    /**
+     * @var \Neklo\News\Helper\Config
+     */
     private $helper;
 
     /**

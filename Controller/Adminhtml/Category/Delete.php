@@ -8,7 +8,9 @@ use Neklo\News\Model\Category as ModelData;
 class Delete extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Neklo_News::category_delete';
-    /** @var ModelData  */
+    /**
+     * @var ModelData
+     */
     private $newsModel;
 
     /**

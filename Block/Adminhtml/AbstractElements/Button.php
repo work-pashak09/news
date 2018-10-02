@@ -8,7 +8,9 @@ use Neklo\News\Block\Adminhtml\Article\Button\Generic;
 abstract class Button extends Generic implements ButtonProviderInterface
 {
     const ADMIN_RESOURCE ='';
-    /** @var \Magento\Framework\AuthorizationInterface  */
+    /**
+     * @var \Magento\Framework\AuthorizationInterface
+     */
     private $authorization;
 
     /**

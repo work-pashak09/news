@@ -34,7 +34,9 @@ class ArticlesCategory extends \Magento\Framework\View\Element\Template
         $this->config = $config;
     }
 
-    /** @return  boolean */
+    /**
+     * @return  boolean
+     */
     public function canShow()
     {
         $category = $this->getCategory();
@@ -59,22 +61,30 @@ class ArticlesCategory extends \Magento\Framework\View\Element\Template
         return $this->registry->registry('article_category');
     }
 
-    /** @return  string */
+    /**
+     * @return  string
+     */
     public function getPartUrlNews()
     {
         return $this->escapeUrl("/{$this->config->getNameUrlLinkArticle()}/");
     }
 
-    /** @return  string */
+    /**
+     * @return  string
+     */
     public function getPrefix()
     {
         return $this->config->getPrefixUrlActicle();
     }
 
-    /** @return  string */
+    /**
+     * @return  string
+     */
     public function getAticleWithCatategory($urlKey)
     {
-        return $this->escapeUrl("/{$this->config->getNameUrlLinkArticle()}/" .
-            "{$this->getCategory()->getCategory()}/$urlKey{$this->getPrefix()}");
+        $categoryName = $this->getCategory()->getCategory();
+        $nameUrlArticle = $this->config->getNameUrlLinkArticle();
+        $prefix = $this->getPrefix();
+        return $this->escapeUrl("/$nameUrlArticle/$categoryName/$urlKey{$prefix}");
     }
 }

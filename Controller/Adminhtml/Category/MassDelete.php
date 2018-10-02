@@ -7,7 +7,9 @@ use Magento\Backend\App\Action;
 class MassDelete extends \Neklo\News\Controller\Adminhtml\MassAction\Delete
 {
     const ADMIN_RESOURCE = 'Neklo_News::category_delete';
-    /** @var \Neklo\News\Model\ResourceModel\Category\CollectionFactory */
+    /**
+     * @var \Neklo\News\Model\ResourceModel\Category\CollectionFactory
+     */
     private $collectionFactory;
 
     /**

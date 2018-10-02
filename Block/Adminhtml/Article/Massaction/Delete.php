@@ -1,11 +1,11 @@
 <?php
 
-namespace Neklo\News\Block\Adminhtml\Category\Massaction;
+namespace Neklo\News\Block\Adminhtml\Article\Massaction;
 
 use Neklo\News\Block\Adminhtml\AbstractElements\Massaction\Item;
 
 class Delete extends Item
 {
-    const  ADMIN_RESOURCE = 'Neklo_News::category_delete';
+    const ADMIN_RESOURCE = 'Neklo_News::article_save';
     const  ACTION = 'delete';
 }

@@ -4,11 +4,17 @@ namespace Neklo\News\Controller\Adminhtml\Category;
 
 class Validate extends \Magento\Backend\App\Action
 {
-    /** @var \Magento\Framework\Controller\Result\JsonFactory */
+    /**
+     * @var \Magento\Framework\Controller\Result\JsonFactory
+     */
     private $resultJsonFactory;
-    /** @var \Magento\Framework\DataObject */
+    /**
+     * @var \Magento\Framework\DataObject
+     */
     private $dataObject;
-    /** @var \Neklo\News\Model\CategoryFactory */
+    /**
+     * @var \Neklo\News\Model\CategoryFactory
+     */
     private $modelFactory;
 
     /**

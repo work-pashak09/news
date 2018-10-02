@@ -8,9 +8,13 @@ use Neklo\News\Model\ResourceModel\Article as ResourceModelArticle;
 
 class Article extends AbstractModel implements IdentityInterface
 {
-    /** @var \Magento\UrlRewrite\Model\UrlRewrite  */
+    /**
+     * @var \Magento\UrlRewrite\Model\UrlRewrite
+     */
     private $rewrite;
-    /** @var \Magento\UrlRewrite\Model\UrlFinderInterface  */
+    /**
+     * @var \Magento\UrlRewrite\Model\UrlFinderInterface
+     */
     private $finder;
     const CACHE_TAG = 'article_data';
 

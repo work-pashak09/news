@@ -5,21 +5,37 @@ namespace Neklo\News\Controller\Adminhtml\Article;
 class Save extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Neklo_News::article_save';
-    /** @var \Neklo\News\Model\ArticleFactory  */
+    /**
+     * @var \Neklo\News\Model\ArticleFactory
+     */
     private $articleFactory;
-    /** @var \Neklo\News\Model\CategoryFactory  */
+    /**
+     * @var \Neklo\News\Model\CategoryFactory
+     */
     private $categoryFactory;
-    /** @var \Neklo\News\Model\ResourceModel\Article\CollectionFactory  */
+    /**
+     * @var \Neklo\News\Model\ResourceModel\Article\CollectionFactory
+     */
     private $collectionFactory;
-    /** @var \Magento\Framework\AuthorizationInterface  */
+    /**
+     * @var \Magento\Framework\AuthorizationInterface
+     */
     private $authorization;
-    /** @var \Magento\Framework\Registry  */
+    /**
+     * @var \Magento\Framework\Registry
+     */
     private $registry;
-    /** @var Validate  */
+    /**
+     * @var Validate
+     */
     private $validate;
-    /** @var \Neklo\News\Helper\Config  */
+    /**
+     * @var \Neklo\News\Helper\Config
+     */
     private $config;
-    /** @var \Magento\UrlRewrite\Model\UrlPersistInterface  */
+    /**
+     * @var \Magento\UrlRewrite\Model\UrlPersistInterface
+     */
     private $persist;
 
     /**
@@ -87,7 +103,7 @@ class Save extends \Magento\Backend\App\Action
             }
             if ($post['rewrite_url']) {
                 $this->articleFactory->rewriteUrlArticle(
-                    $model,$category,
+                    $model, $category,
                     $this->config->getUrlActicleName(),
                     $post['url_key'],
                     $this->config->getPrefixUrlActicle()

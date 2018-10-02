@@ -48,7 +48,7 @@
         <filters name="listing_filters"/>
         <paging name="listing_paging"/>
         <exportButton name="export_button"/>
-        <massaction name="listing_massaction" class="Neklo\News\Block\Adminhtml\Article\Massactions\Massaction">
+        <massaction name="listing_massaction" class="Neklo\News\Block\Adminhtml\AbstractElements\Massaction\Block">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="selectProvider" xsi:type="string">neklo_news_article_list.neklo_news_article_list.neklo_news_acticle_columns.ids</item>
@@ -56,7 +56,7 @@
                     <item name="indexField" xsi:type="string">id</item>
                 </item>
             </argument>
-            <action name="run">
+            <action name="delete" class="Neklo\News\Block\Adminhtml\Article\Massaction\Delete">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">run</item>

@@ -6,12 +6,15 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
                     <resource id="Neklo_News::manage_article" title="News" sortOrder="0">
-                        <resource id="Neklo_News::article_delete" title="Delete Articles" sortOrder="0"/>
-                        <resource id="Neklo_News::article_save" title="Save Articles" sortOrder="0"/>
+                        <resource id="Neklo_News::article" title="Article">
+                        <resource id="Neklo_News::article_delete" title="Delete Article" sortOrder="0"/>
+                        <resource id="Neklo_News::article_save" title="Save Article" sortOrder="0"/>
+                        </resource>
+                    <resource id="Neklo_News::manage_categories" title="Category" sortOrder="0">
+                        <resource id="Neklo_News::category_delete" title="Delete Category" sortOrder="0"/>
+                        <resource id="Neklo_News::run_category" title="Run Category" sortOrder="0"/>
+                        <resource id="Neklo_News::category_save" title="Save Category" sortOrder="0"/>
                     </resource>
-                    <resource id="Neklo_News::manage_categories" title="News" sortOrder="0">
-                        <resource id="Neklo_News::category_delete" title="Delete Categories" sortOrder="0"/>
-                        <resource id="Neklo_News::category_save" title="Save Categories" sortOrder="0"/>
                     </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">

@@ -5,9 +5,13 @@ namespace Neklo\News\Controller\Adminhtml\Category;
 class Save extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Neklo_News::category_save';
-    /** @var \Neklo\News\Model\CategoryFactory */
+    /**
+     * @var \Neklo\News\Model\CategoryFactory
+     */
     private $categoryFactory;
-    /** @var Validate */
+    /**
+     * @var Validate
+     */
     private $validate;
 
     /**

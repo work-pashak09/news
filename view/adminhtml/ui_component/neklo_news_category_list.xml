@@ -48,8 +48,7 @@
         <filters name="listing_filters"/>
         <paging name="listing_paging"/>
         <exportButton name="export_button"/>
-
-        <massaction name="listing_massaction" class="Neklo\News\Block\Adminhtml\Category\Massaction\Delete">
+        <massaction name="listing_massaction" class="Neklo\News\Block\Adminhtml\AbstractElements\Massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="selectProvider" xsi:type="string">neklo_news_category_list.neklo_news_category_list.neklo_news_category_columns.ids</item>
@@ -57,10 +56,10 @@
                     <item name="indexField" xsi:type="string">id</item>
                 </item>
             </argument>
-            <action name="delete">
+            <action name="delete" class="Neklo\News\Block\Adminhtml\Category\Massaction\Delete">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">run</item>
+                        <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete Categories</item>
                         <item name="url" xsi:type="url" path="news/category/massdelete/"/>
                         <item name="confirm" xsi:type="array">
@@ -70,11 +69,11 @@
                     </item>
                 </argument>
             </action>
-            <action name="run_for_example">
+            <action name="run_for_example" class="Neklo\News\Block\Adminhtml\Category\Massaction\RunCategory">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">run</item>
-                        <item name="label" xsi:type="string" translate="true">Run(no working)</item>
+                        <item name="label" xsi:type="string" translate="true">Run(for example)</item>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Run jobs</item>
                             <item name="message" xsi:type="string" translate="true">Are you sure to delete selected category?</item>

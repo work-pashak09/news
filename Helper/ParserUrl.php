@@ -4,7 +4,9 @@ namespace Neklo\News\Helper;
 
 class ParserUrl
 {
-    /** @var \Magento\Framework\App\RequestInterface  */
+    /**
+     * @var \Magento\Framework\App\RequestInterface
+     */
     private $request;
 
     /**

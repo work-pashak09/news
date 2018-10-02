@@ -37,7 +37,10 @@ class View extends \Magento\Framework\View\Element\Template
         $this->registry = $registry;
         $this->categoriesModel = $categoriesModel;
     }
-    /** \Neklo\News\Model\CategoryFactory */
+
+    /**
+     * @return \Neklo\News\Model\CategoryFactory
+     */
     public function getOneNews()
     {
         return $this->registry->registry('article');

@@ -4,15 +4,20 @@ namespace Neklo\News\Controller\Adminhtml\Article;
 
 class Validate extends \Magento\Backend\App\Action
 {
-    /** @var \Magento\Framework\DataObject */
+    /**
+     * @var \Magento\Framework\DataObject
+     */
     private $dataObject;
-    /** @var \Magento\Framework\Registry */
+    /**
+     * @var \Magento\Framework\Registry
+     */
     private $registry;
-    /** @var \Magento\Framework\Controller\Result\JsonFactory  */
+    /**
+     * @var \Magento\Framework\Controller\Result\JsonFactory
+     */
     private $resultJsonFactory;
 
     /**
-     * Validate constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\DataObject $dataObject
      * @param \Magento\Framework\Registry $registry
@@ -54,6 +59,9 @@ class Validate extends \Magento\Backend\App\Action
         return $errorMessage;
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $data = $this->_request->getParams();

@@ -7,11 +7,17 @@ use Magento\Framework\Controller\ResultFactory;
 
 class View extends \Magento\Framework\App\Action\Action
 {
-    /** @var \Magento\Framework\View\Result\PageFactory  */
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     private $resultPageFactory;
-    /** @var \Neklo\News\Model\CategoryFactory  */
+    /**
+     * @var \Neklo\News\Model\CategoryFactory
+     */
     private $model;
-    /** @var \Magento\Framework\Registry  */
+    /**
+     * @var \Magento\Framework\Registry
+     */
     private $registry;
 
     /**

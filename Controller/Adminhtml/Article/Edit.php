@@ -5,9 +5,14 @@ namespace Neklo\News\Controller\Adminhtml\Article;
 class Edit extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Neklo_News::article_save';
-    /** @var \Magento\Framework\View\Result\PageFactory */
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     private $resultPageFactory;
-    /** @var \Magento\Framework\Registry */
+    /**
+     *
+     * @var \Magento\Framework\Registry
+     */
     private $registry;
     /** @var \Neklo\News\Model\ArticleFactory */
     private $articleFactory;

@@ -4,23 +4,41 @@ namespace Neklo\News\Controller;
 
 class Router implements \Magento\Framework\App\RouterInterface
 {
-    /** @var \Magento\Framework\App\ActionFactory  */
+    /**
+     * @var \Magento\Framework\App\ActionFactory
+     */
     private $actionFactory;
-    /** @var \Neklo\News\Helper\Config  */
+    /**
+     * @var \Neklo\News\Helper\Config
+     */
     private $config;
-    /** @var \Magento\Framework\App\ResponseInterface  */
+    /**
+     * @var \Magento\Framework\App\ResponseInterface
+     */
     private $response;
-    /** @var  \Neklo\News\Model\CategoryFactory*/
+    /**
+     * @var  \Neklo\News\Model\CategoryFactory
+     */
     private $categoriesFactory;
-    /** @var \Neklo\News\Model\ArticleFactory  */
+    /**
+     * @var \Neklo\News\Model\ArticleFactory
+     */
     private $news;
-    /** @var \Magento\Framework\Registry  */
+    /**
+     * @var \Magento\Framework\Registry
+     */
     private $registry;
-    /** @var \Magento\Framework\App\Action\RedirectFactory  */
+    /**
+     * @var \Magento\Framework\App\Action\RedirectFactory
+     */
     private $redirect;
-    /** @var \Neklo\News\Helper\ParserUrl  */
+    /**
+     * @var \Neklo\News\Helper\ParserUrl
+     */
     private $parserUrl;
-    /** @var \Neklo\News\Model\ResourceModel\Article\Collection  */
+    /**
+     * @var \Neklo\News\Model\ResourceModel\Article\Collection
+     */
     private $newsCollection;
 
     /**

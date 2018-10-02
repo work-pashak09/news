@@ -24,6 +24,7 @@ class Link extends \Magento\Framework\View\Element\Html\Link
     }
 
     /**
+     *
      * @return string
      */
     public function _toHtml()

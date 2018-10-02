@@ -6,7 +6,9 @@ use Magento\Backend\App\Action;
 
 class MassDelete extends \Neklo\News\Controller\Adminhtml\MassAction\Delete
 {
-    /** @var \Neklo\News\Model\ResourceModel\Article\CollectionFactory  */
+    /**
+     * @var \Neklo\News\Model\ResourceModel\Article\CollectionFactory
+     */
     private $collectionFactory;
 
     /**

@@ -4,8 +4,11 @@ namespace Neklo\News\Ui\DataProvider;
 
 class Category extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
-    /** @var  array*/
+    /**
+     * @var array
+     */
     private $loadedData;
+
     /**
      * @param string $name
      * @param string $primaryFieldName
@@ -14,6 +17,7 @@ class Category extends \Magento\Ui\DataProvider\AbstractDataProvider
      * @param array $meta
      * @param array $data
      */
+
     public function __construct(
         $name,
         $primaryFieldName,
